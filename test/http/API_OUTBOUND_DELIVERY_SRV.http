@@ -1,0 +1,1833 @@
+@server = http://localhost:8080
+
+
+### A_OutbDeliveryItemText
+# @name A_OutbDeliveryItemText_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItemText
+
+
+
+### A_OutbDeliveryItemText
+# @name A_OutbDeliveryItemText_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItemText
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "xt-8902141",
+  "DeliveryDocumentItem": "902141",
+  "TextElement": "2141",
+  "Language": "41",
+  "TextElementDescription": "TextElementDescription-8902141",
+  "TextElementText": "TextElementText-8902141",
+  "DeliveryLongTextIsFormatted": false
+}
+
+
+### A_OutbDeliveryItemText
+# @name A_OutbDeliveryItemText_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItemText(DeliveryDocument='xt-8902141',DeliveryDocumentItem='902141',TextElement='2141',Language='41')
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "xt-8902141",
+  "DeliveryDocumentItem": "902141",
+  "TextElement": "2141",
+  "Language": "41",
+  "TextElementDescription": "TextElementDescription-8902141",
+  "TextElementText": "TextElementText-8902141",
+  "DeliveryLongTextIsFormatted": false
+}
+
+
+### A_OutbDeliveryItemText
+# @name A_OutbDeliveryItemText_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItemText(DeliveryDocument='xt-8902141',DeliveryDocumentItem='902141',TextElement='2141',Language='41')
+Content-Type: application/json
+
+
+### A_OutbDeliveryHeaderText
+# @name A_OutbDeliveryHeaderText_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeaderText
+
+
+
+### A_OutbDeliveryHeaderText
+# @name A_OutbDeliveryHeaderText_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeaderText
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "t-25975319",
+  "TextElement": "5319",
+  "Language": "19",
+  "TextElementDescription": "extElementDescription-25975319",
+  "TextElementText": "TextElementText-25975319",
+  "DeliveryLongTextIsFormatted": false
+}
+
+
+### A_OutbDeliveryHeaderText
+# @name A_OutbDeliveryHeaderText_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeaderText(DeliveryDocument='t-25975319',TextElement='5319',Language='19')
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "t-25975319",
+  "TextElement": "5319",
+  "Language": "19",
+  "TextElementDescription": "extElementDescription-25975319",
+  "TextElementText": "TextElementText-25975319",
+  "DeliveryLongTextIsFormatted": false
+}
+
+
+### A_OutbDeliveryHeaderText
+# @name A_OutbDeliveryHeaderText_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeaderText(DeliveryDocument='t-25975319',TextElement='5319',Language='19')
+Content-Type: application/json
+
+
+### A_HandlingUnitHeaderDelivery
+# @name A_HandlingUnitHeaderDelivery_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitHeaderDelivery
+
+
+
+### A_HandlingUnitHeaderDelivery
+# @name A_HandlingUnitHeaderDelivery_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitHeaderDelivery
+Content-Type: application/json
+
+{
+  "HandlingUnitInternalId": "y-18366025",
+  "CreatedByUser": "ser-18366025",
+  "CreationDate": "2005-01-09T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "DeliveryDocument": "t-18366025",
+  "GrossVolume": 56.205,
+  "GrossWeight": 94.436,
+  "HandlingUnitBaseUnitOfMeasure": "025",
+  "HandlingUnitContentDescription": "HandlingUnitContentDescription-18366025",
+  "HandlingUnitExternalId": "tExternalId-18366025",
+  "HandlingUnitExternalIdType": "5",
+  "HandlingUnitHeight": 91.243,
+  "HandlingUnitInternalStatus": "6025",
+  "HandlingUnitLength": 45.126,
+  "HandlingUnitLowerLevelRefer": "r-18366025",
+  "HandlingUnitMaxVolume": 22.18,
+  "HandlingUnitMaxWeight": 32.1,
+  "HandlingUnitNetVolume": 12.297,
+  "HandlingUnitSecondExternalId": "dExternalId-18366025",
+  "HandlingUnitTareVolume": 83.286,
+  "HandlingUnitTareVolumeUnit": "025",
+  "HandlingUnitTareWeight": 16.933,
+  "HandlingUnitTareWeightUnit": "025",
+  "HandlingUnitUoMDimension": "025",
+  "HandlingUnitWidth": 55.252,
+  "LastChangeDate": "2018-01-02T00:00:00.000Z",
+  "LastChangedByUser": "ser-18366025",
+  "LastChangeTime": "22:59:53",
+  "NetWeight": 44.198,
+  "PackagingMaterial": "PackagingMaterial-18366025",
+  "PackagingMaterialCategory": "5",
+  "PackagingMaterialGroup": "6025",
+  "PackagingMaterialType": "6025",
+  "PackingInstructionNumber": "ctionNumber-18366025",
+  "ShippingPoint": "6025",
+  "VolumeUnit": "025",
+  "WeightUnit": "025"
+}
+
+
+### A_HandlingUnitHeaderDelivery
+# @name A_HandlingUnitHeaderDelivery_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitHeaderDelivery/y-18366025
+Content-Type: application/json
+
+{
+  "HandlingUnitInternalId": "y-18366025",
+  "CreatedByUser": "ser-18366025",
+  "CreationDate": "2005-01-09T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "DeliveryDocument": "t-18366025",
+  "GrossVolume": 56.205,
+  "GrossWeight": 94.436,
+  "HandlingUnitBaseUnitOfMeasure": "025",
+  "HandlingUnitContentDescription": "HandlingUnitContentDescription-18366025",
+  "HandlingUnitExternalId": "tExternalId-18366025",
+  "HandlingUnitExternalIdType": "5",
+  "HandlingUnitHeight": 91.243,
+  "HandlingUnitInternalStatus": "6025",
+  "HandlingUnitLength": 45.126,
+  "HandlingUnitLowerLevelRefer": "r-18366025",
+  "HandlingUnitMaxVolume": 22.18,
+  "HandlingUnitMaxWeight": 32.1,
+  "HandlingUnitNetVolume": 12.297,
+  "HandlingUnitSecondExternalId": "dExternalId-18366025",
+  "HandlingUnitTareVolume": 83.286,
+  "HandlingUnitTareVolumeUnit": "025",
+  "HandlingUnitTareWeight": 16.933,
+  "HandlingUnitTareWeightUnit": "025",
+  "HandlingUnitUoMDimension": "025",
+  "HandlingUnitWidth": 55.252,
+  "LastChangeDate": "2018-01-02T00:00:00.000Z",
+  "LastChangedByUser": "ser-18366025",
+  "LastChangeTime": "22:59:53",
+  "NetWeight": 44.198,
+  "PackagingMaterial": "PackagingMaterial-18366025",
+  "PackagingMaterialCategory": "5",
+  "PackagingMaterialGroup": "6025",
+  "PackagingMaterialType": "6025",
+  "PackingInstructionNumber": "ctionNumber-18366025",
+  "ShippingPoint": "6025",
+  "VolumeUnit": "025",
+  "WeightUnit": "025"
+}
+
+
+### A_HandlingUnitHeaderDelivery
+# @name A_HandlingUnitHeaderDelivery_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitHeaderDelivery/y-18366025
+Content-Type: application/json
+
+
+### A_HandlingUnitItemDelivery
+# @name A_HandlingUnitItemDelivery_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitItemDelivery
+
+
+
+### A_HandlingUnitItemDelivery
+# @name A_HandlingUnitItemDelivery_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitItemDelivery
+Content-Type: application/json
+
+{
+  "HandlingUnitInternalId": "y-19710825",
+  "HandlingUnitItem": "710825",
+  "Batch": "h-19710825",
+  "DeliveryDocument": "t-19710825",
+  "DeliveryDocumentItem": "710825",
+  "HandlingUnitExternalId": "tExternalId-19710825",
+  "HandlingUnitNestedInternalId": "d-19710825",
+  "HandlingUnitNrOfAuxPackgMat": 90,
+  "HandlingUnitNumberOfSerialnumb": 59,
+  "HandlingUnitQuantity": 22.157,
+  "HandlingUnitQuantityUnit": "825",
+  "HandlingUnitTypeOfContent": "5",
+  "Material": "Material-19710825",
+  "MaterialByCustomer": "MaterialByCustomer-19710825",
+  "MaterialName": "MaterialName-19710825",
+  "SerialNumberProfile": "0825"
+}
+
+
+### A_HandlingUnitItemDelivery
+# @name A_HandlingUnitItemDelivery_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitItemDelivery(HandlingUnitInternalId='y-19710825',HandlingUnitItem='710825')
+Content-Type: application/json
+
+{
+  "HandlingUnitInternalId": "y-19710825",
+  "HandlingUnitItem": "710825",
+  "Batch": "h-19710825",
+  "DeliveryDocument": "t-19710825",
+  "DeliveryDocumentItem": "710825",
+  "HandlingUnitExternalId": "tExternalId-19710825",
+  "HandlingUnitNestedInternalId": "d-19710825",
+  "HandlingUnitNrOfAuxPackgMat": 90,
+  "HandlingUnitNumberOfSerialnumb": 59,
+  "HandlingUnitQuantity": 22.157,
+  "HandlingUnitQuantityUnit": "825",
+  "HandlingUnitTypeOfContent": "5",
+  "Material": "Material-19710825",
+  "MaterialByCustomer": "MaterialByCustomer-19710825",
+  "MaterialName": "MaterialName-19710825",
+  "SerialNumberProfile": "0825"
+}
+
+
+### A_HandlingUnitItemDelivery
+# @name A_HandlingUnitItemDelivery_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_HandlingUnitItemDelivery(HandlingUnitInternalId='y-19710825',HandlingUnitItem='710825')
+Content-Type: application/json
+
+
+### A_OutbDeliveryAddress2
+# @name A_OutbDeliveryAddress2_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress2
+
+
+
+### A_OutbDeliveryAddress2
+# @name A_OutbDeliveryAddress2_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress2
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "s2-8759917",
+  "PartnerFunction": "17",
+  "DeliveryVersion": "9917",
+  "AdditionalStreetPrefixName": "AdditionalStreetPrefixName-8759917",
+  "AddressID": "ID-8759917",
+  "AdditionalStreetSuffixName": "AdditionalStreetSuffixName-8759917",
+  "AddressTimeZone": "759917",
+  "Building": "Building-8759917",
+  "BusinessPartnerName1": "BusinessPartnerName1-8759917",
+  "BusinessPartnerName2": "BusinessPartnerName2-8759917",
+  "BusinessPartnerName3": "BusinessPartnerName3-8759917",
+  "BusinessPartnerName4": "BusinessPartnerName4-8759917",
+  "PersonFamilyName": "PersonFamilyName-8759917",
+  "PersonGivenName": "PersonGivenName-8759917",
+  "CareOfName": "CareOfName-8759917",
+  "CityName": "CityName-8759917",
+  "CompanyPostalCode": "de-8759917",
+  "CorrespondenceLanguage": "17",
+  "Country": "917",
+  "County": "County-8759917",
+  "DeliveryServiceNumber": "er-8759917",
+  "DeliveryServiceTypeCode": "9917",
+  "District": "District-8759917",
+  "EmailAddress": "EmailAddress-8759917",
+  "FaxNumber": "FaxNumber-8759917",
+  "FaxNumberExtension": "on-8759917",
+  "Floor": "or-8759917",
+  "FormOfAddress": "9917",
+  "HomeCityName": "HomeCityName-8759917",
+  "HouseNumber": "er-8759917",
+  "HouseNumberSupplementText": "xt-8759917",
+  "MobilePhoneNumber": "MobilePhoneNumber-8759917",
+  "PhoneNumber": "PhoneNumber-8759917",
+  "PhoneNumberExtension": "on-8759917",
+  "POBox": "ox-8759917",
+  "POBoxDeviatingCityName": "POBoxDeviatingCityName-8759917",
+  "POBoxDeviatingCountry": "917",
+  "POBoxDeviatingRegion": "917",
+  "POBoxIsWithoutNumber": false,
+  "POBoxLobbyName": "POBoxLobbyName-8759917",
+  "POBoxPostalCode": "de-8759917",
+  "PostalCode": "de-8759917",
+  "PrfrdCommMediumType": "917",
+  "Region": "917",
+  "RoomNumber": "er-8759917",
+  "StreetName": "StreetName-8759917",
+  "StreetPrefixName": "StreetPrefixName-8759917",
+  "StreetSuffixName": "StreetSuffixName-8759917",
+  "TaxJurisdiction": "diction-8759917",
+  "TransportZone": "ne-8759917"
+}
+
+
+### A_OutbDeliveryAddress2
+# @name A_OutbDeliveryAddress2_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress2(DeliveryDocument='s2-8759917',PartnerFunction='17')
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "s2-8759917",
+  "PartnerFunction": "17",
+  "DeliveryVersion": "9917",
+  "AdditionalStreetPrefixName": "AdditionalStreetPrefixName-8759917",
+  "AddressID": "ID-8759917",
+  "AdditionalStreetSuffixName": "AdditionalStreetSuffixName-8759917",
+  "AddressTimeZone": "759917",
+  "Building": "Building-8759917",
+  "BusinessPartnerName1": "BusinessPartnerName1-8759917",
+  "BusinessPartnerName2": "BusinessPartnerName2-8759917",
+  "BusinessPartnerName3": "BusinessPartnerName3-8759917",
+  "BusinessPartnerName4": "BusinessPartnerName4-8759917",
+  "PersonFamilyName": "PersonFamilyName-8759917",
+  "PersonGivenName": "PersonGivenName-8759917",
+  "CareOfName": "CareOfName-8759917",
+  "CityName": "CityName-8759917",
+  "CompanyPostalCode": "de-8759917",
+  "CorrespondenceLanguage": "17",
+  "Country": "917",
+  "County": "County-8759917",
+  "DeliveryServiceNumber": "er-8759917",
+  "DeliveryServiceTypeCode": "9917",
+  "District": "District-8759917",
+  "EmailAddress": "EmailAddress-8759917",
+  "FaxNumber": "FaxNumber-8759917",
+  "FaxNumberExtension": "on-8759917",
+  "Floor": "or-8759917",
+  "FormOfAddress": "9917",
+  "HomeCityName": "HomeCityName-8759917",
+  "HouseNumber": "er-8759917",
+  "HouseNumberSupplementText": "xt-8759917",
+  "MobilePhoneNumber": "MobilePhoneNumber-8759917",
+  "PhoneNumber": "PhoneNumber-8759917",
+  "PhoneNumberExtension": "on-8759917",
+  "POBox": "ox-8759917",
+  "POBoxDeviatingCityName": "POBoxDeviatingCityName-8759917",
+  "POBoxDeviatingCountry": "917",
+  "POBoxDeviatingRegion": "917",
+  "POBoxIsWithoutNumber": false,
+  "POBoxLobbyName": "POBoxLobbyName-8759917",
+  "POBoxPostalCode": "de-8759917",
+  "PostalCode": "de-8759917",
+  "PrfrdCommMediumType": "917",
+  "Region": "917",
+  "RoomNumber": "er-8759917",
+  "StreetName": "StreetName-8759917",
+  "StreetPrefixName": "StreetPrefixName-8759917",
+  "StreetSuffixName": "StreetSuffixName-8759917",
+  "TaxJurisdiction": "diction-8759917",
+  "TransportZone": "ne-8759917"
+}
+
+
+### A_OutbDeliveryAddress2
+# @name A_OutbDeliveryAddress2_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress2(DeliveryDocument='s2-8759917',PartnerFunction='17')
+Content-Type: application/json
+
+
+### A_OutbDeliveryItem
+# @name A_OutbDeliveryItem_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItem
+
+
+
+### A_OutbDeliveryItem
+# @name A_OutbDeliveryItem_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItem
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "m-28693379",
+  "DeliveryDocumentItem": "693379",
+  "ActualDeliveredQtyInBaseUnit": 99.108,
+  "ActualDeliveryQuantity": 82.218,
+  "AdditionalCustomerGroup1": "379",
+  "AdditionalCustomerGroup2": "379",
+  "AdditionalCustomerGroup3": "379",
+  "AdditionalCustomerGroup4": "379",
+  "AdditionalCustomerGroup5": "379",
+  "AdditionalMaterialGroup1": "379",
+  "AdditionalMaterialGroup2": "379",
+  "AdditionalMaterialGroup3": "379",
+  "AdditionalMaterialGroup4": "379",
+  "AdditionalMaterialGroup5": "379",
+  "AlternateProductNumber": "AlternateProductNumber-28693379",
+  "BaseUnit": "379",
+  "Batch": "h-28693379",
+  "BatchBySupplier": "pplier-28693379",
+  "BatchClassification": "ification-28693379",
+  "BOMExplosion": "28693379",
+  "BusinessArea": "3379",
+  "ConsumptionPosting": "9",
+  "ControllingArea": "3379",
+  "CostCenter": "r-28693379",
+  "CreatedByUser": "ser-28693379",
+  "CreationDate": "2018-09-16T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "CustEngineeringChgStatus": "hgStatus-28693379",
+  "DeliveryDocumentItemCategory": "3379",
+  "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693379",
+  "DeliveryGroup": "379",
+  "DeliveryQuantityUnit": "379",
+  "DeliveryRelatedBillingStatus": "9",
+  "DeliveryToBaseQuantityDnmntr": 58,
+  "DeliveryToBaseQuantityNmrtr": 51,
+  "DeliveryVersion": "3379",
+  "DepartmentClassificationByCust": "3379",
+  "DistributionChannel": "79",
+  "Division": "79",
+  "EUDeliveryItemARCStatus": "9",
+  "FixedShipgProcgDurationInDays": 63.26,
+  "GLAccount": "t-28693379",
+  "GoodsMovementReasonCode": "3379",
+  "GoodsMovementStatus": "9",
+  "GoodsMovementType": "379",
+  "HigherLvlItmOfBatSpltItm": "693379",
+  "HigherLevelItem": "693379",
+  "InspectionLot": "Lot-28693379",
+  "InspectionPartialLot": "693379",
+  "IntercompanyBillingStatus": "9",
+  "InternationalArticleNumber": "cleNumber-28693379",
+  "InventorySpecialStockType": "9",
+  "InventoryValuationType": "e-28693379",
+  "IsCompletelyDelivered": false,
+  "IsNotGoodsMovementsRelevant": "9",
+  "IsSeparateValuation": false,
+  "IssgOrRcvgBatch": "h-28693379",
+  "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693379",
+  "IssgOrRcvgSpclStockInd": "9",
+  "IssgOrRcvgStockCategory": "9",
+  "IssgOrRcvgValuationType": "e-28693379",
+  "IssuingOrReceivingPlant": "3379",
+  "IssuingOrReceivingStorageLoc": "3379",
+  "ItemBillingBlockReason": "79",
+  "ItemBillingIncompletionStatus": "9",
+  "ItemDeliveryIncompletionStatus": "9",
+  "ItemGdsMvtIncompletionSts": "9",
+  "ItemGeneralIncompletionStatus": "9",
+  "ItemGrossWeight": 20.437,
+  "ItemIsBillingRelevant": "9",
+  "ItemNetWeight": 0.168,
+  "ItemPackingIncompletionStatus": "9",
+  "ItemPickingIncompletionStatus": "9",
+  "ItemVolume": 89.202,
+  "ItemVolumeUnit": "379",
+  "ItemWeightUnit": "379",
+  "LastChangeDate": "2005-11-27T00:00:00.000Z",
+  "LoadingGroup": "3379",
+  "ManufactureDate": "2004-06-12T00:00:00.000Z",
+  "Material": "Material-28693379",
+  "MaterialByCustomer": "MaterialByCustomer-28693379",
+  "MaterialFreightGroup": "28693379",
+  "MaterialGroup": "-28693379",
+  "MaterialIsBatchManaged": false,
+  "MaterialIsIntBatchManaged": false,
+  "NumberOfSerialNumbers": 40,
+  "OrderID": "rID-28693379",
+  "OrderItem": "3379",
+  "OriginalDeliveryQuantity": 45.623,
+  "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693379",
+  "OverdelivTolrtdLmtRatioInPct": 94.2,
+  "PackingStatus": "9",
+  "PartialDeliveryIsAllowed": "9",
+  "PaymentGuaranteeForm": "79",
+  "PickingConfirmationStatus": "9",
+  "PickingControl": "9",
+  "PickingStatus": "9",
+  "Plant": "3379",
+  "PrimaryPostingSwitch": "9",
+  "ProductAvailabilityDate": "2004-09-22T00:00:00.000Z",
+  "ProductAvailabilityTime": "22:59:53",
+  "ProductConfiguration": "iguration-28693379",
+  "ProductHierarchyNode": "archyNode-28693379",
+  "ProfitabilitySegment": "t-28693379",
+  "ProfitCenter": "r-28693379",
+  "ProofOfDeliveryRelevanceCode": "9",
+  "ProofOfDeliveryStatus": "9",
+  "QuantityIsFixed": false,
+  "ReceivingPoint": "ReceivingPoint-28693379",
+  "ReferenceDocumentLogicalSystem": "m-28693379",
+  "ReferenceSDDocument": "t-28693379",
+  "ReferenceSDDocumentCategory": "3379",
+  "ReferenceSDDocumentItem": "693379",
+  "RetailPromotion": "n-28693379",
+  "SalesDocumentItemType": "9",
+  "SalesGroup": "379",
+  "SalesOffice": "3379",
+  "SDDocumentCategory": "3379",
+  "SDProcessStatus": "9",
+  "ShelfLifeExpirationDate": "2007-01-03T00:00:00.000Z",
+  "StatisticsDate": "2016-10-24T00:00:00.000Z",
+  "StockType": "9",
+  "StorageBin": "n-28693379",
+  "StorageLocation": "3379",
+  "StorageType": "379",
+  "SubsequentMovementType": "379",
+  "TransportationGroup": "3379",
+  "UnderdelivTolrtdLmtRatioInPct": 12.2,
+  "UnlimitedOverdeliveryIsAllowed": false,
+  "VarblShipgProcgDurationInDays": 73.98,
+  "Warehouse": "379",
+  "WarehouseActivityStatus": "9",
+  "WarehouseStagingArea": "a-28693379",
+  "WarehouseStockCategory": "9",
+  "WarehouseStorageBin": "n-28693379",
+  "to_SerialDeliveryItem": {
+    "MaintenanceItemObjectList": 1844353
+  }
+}
+
+
+### A_OutbDeliveryItem
+# @name A_OutbDeliveryItem_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItem(DeliveryDocument='m-28693379',DeliveryDocumentItem='693379')
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "m-28693379",
+  "DeliveryDocumentItem": "693379",
+  "ActualDeliveredQtyInBaseUnit": 99.108,
+  "ActualDeliveryQuantity": 82.218,
+  "AdditionalCustomerGroup1": "379",
+  "AdditionalCustomerGroup2": "379",
+  "AdditionalCustomerGroup3": "379",
+  "AdditionalCustomerGroup4": "379",
+  "AdditionalCustomerGroup5": "379",
+  "AdditionalMaterialGroup1": "379",
+  "AdditionalMaterialGroup2": "379",
+  "AdditionalMaterialGroup3": "379",
+  "AdditionalMaterialGroup4": "379",
+  "AdditionalMaterialGroup5": "379",
+  "AlternateProductNumber": "AlternateProductNumber-28693379",
+  "BaseUnit": "379",
+  "Batch": "h-28693379",
+  "BatchBySupplier": "pplier-28693379",
+  "BatchClassification": "ification-28693379",
+  "BOMExplosion": "28693379",
+  "BusinessArea": "3379",
+  "ConsumptionPosting": "9",
+  "ControllingArea": "3379",
+  "CostCenter": "r-28693379",
+  "CreatedByUser": "ser-28693379",
+  "CreationDate": "2018-09-16T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "CustEngineeringChgStatus": "hgStatus-28693379",
+  "DeliveryDocumentItemCategory": "3379",
+  "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693379",
+  "DeliveryGroup": "379",
+  "DeliveryQuantityUnit": "379",
+  "DeliveryRelatedBillingStatus": "9",
+  "DeliveryToBaseQuantityDnmntr": 58,
+  "DeliveryToBaseQuantityNmrtr": 51,
+  "DeliveryVersion": "3379",
+  "DepartmentClassificationByCust": "3379",
+  "DistributionChannel": "79",
+  "Division": "79",
+  "EUDeliveryItemARCStatus": "9",
+  "FixedShipgProcgDurationInDays": 63.26,
+  "GLAccount": "t-28693379",
+  "GoodsMovementReasonCode": "3379",
+  "GoodsMovementStatus": "9",
+  "GoodsMovementType": "379",
+  "HigherLvlItmOfBatSpltItm": "693379",
+  "HigherLevelItem": "693379",
+  "InspectionLot": "Lot-28693379",
+  "InspectionPartialLot": "693379",
+  "IntercompanyBillingStatus": "9",
+  "InternationalArticleNumber": "cleNumber-28693379",
+  "InventorySpecialStockType": "9",
+  "InventoryValuationType": "e-28693379",
+  "IsCompletelyDelivered": false,
+  "IsNotGoodsMovementsRelevant": "9",
+  "IsSeparateValuation": false,
+  "IssgOrRcvgBatch": "h-28693379",
+  "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693379",
+  "IssgOrRcvgSpclStockInd": "9",
+  "IssgOrRcvgStockCategory": "9",
+  "IssgOrRcvgValuationType": "e-28693379",
+  "IssuingOrReceivingPlant": "3379",
+  "IssuingOrReceivingStorageLoc": "3379",
+  "ItemBillingBlockReason": "79",
+  "ItemBillingIncompletionStatus": "9",
+  "ItemDeliveryIncompletionStatus": "9",
+  "ItemGdsMvtIncompletionSts": "9",
+  "ItemGeneralIncompletionStatus": "9",
+  "ItemGrossWeight": 20.437,
+  "ItemIsBillingRelevant": "9",
+  "ItemNetWeight": 0.168,
+  "ItemPackingIncompletionStatus": "9",
+  "ItemPickingIncompletionStatus": "9",
+  "ItemVolume": 89.202,
+  "ItemVolumeUnit": "379",
+  "ItemWeightUnit": "379",
+  "LastChangeDate": "2005-11-27T00:00:00.000Z",
+  "LoadingGroup": "3379",
+  "ManufactureDate": "2004-06-12T00:00:00.000Z",
+  "Material": "Material-28693379",
+  "MaterialByCustomer": "MaterialByCustomer-28693379",
+  "MaterialFreightGroup": "28693379",
+  "MaterialGroup": "-28693379",
+  "MaterialIsBatchManaged": false,
+  "MaterialIsIntBatchManaged": false,
+  "NumberOfSerialNumbers": 40,
+  "OrderID": "rID-28693379",
+  "OrderItem": "3379",
+  "OriginalDeliveryQuantity": 45.623,
+  "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693379",
+  "OverdelivTolrtdLmtRatioInPct": 94.2,
+  "PackingStatus": "9",
+  "PartialDeliveryIsAllowed": "9",
+  "PaymentGuaranteeForm": "79",
+  "PickingConfirmationStatus": "9",
+  "PickingControl": "9",
+  "PickingStatus": "9",
+  "Plant": "3379",
+  "PrimaryPostingSwitch": "9",
+  "ProductAvailabilityDate": "2004-09-22T00:00:00.000Z",
+  "ProductAvailabilityTime": "22:59:53",
+  "ProductConfiguration": "iguration-28693379",
+  "ProductHierarchyNode": "archyNode-28693379",
+  "ProfitabilitySegment": "t-28693379",
+  "ProfitCenter": "r-28693379",
+  "ProofOfDeliveryRelevanceCode": "9",
+  "ProofOfDeliveryStatus": "9",
+  "QuantityIsFixed": false,
+  "ReceivingPoint": "ReceivingPoint-28693379",
+  "ReferenceDocumentLogicalSystem": "m-28693379",
+  "ReferenceSDDocument": "t-28693379",
+  "ReferenceSDDocumentCategory": "3379",
+  "ReferenceSDDocumentItem": "693379",
+  "RetailPromotion": "n-28693379",
+  "SalesDocumentItemType": "9",
+  "SalesGroup": "379",
+  "SalesOffice": "3379",
+  "SDDocumentCategory": "3379",
+  "SDProcessStatus": "9",
+  "ShelfLifeExpirationDate": "2007-01-03T00:00:00.000Z",
+  "StatisticsDate": "2016-10-24T00:00:00.000Z",
+  "StockType": "9",
+  "StorageBin": "n-28693379",
+  "StorageLocation": "3379",
+  "StorageType": "379",
+  "SubsequentMovementType": "379",
+  "TransportationGroup": "3379",
+  "UnderdelivTolrtdLmtRatioInPct": 12.2,
+  "UnlimitedOverdeliveryIsAllowed": false,
+  "VarblShipgProcgDurationInDays": 73.98,
+  "Warehouse": "379",
+  "WarehouseActivityStatus": "9",
+  "WarehouseStagingArea": "a-28693379",
+  "WarehouseStockCategory": "9",
+  "WarehouseStorageBin": "n-28693379",
+  "to_SerialDeliveryItem": {
+    "MaintenanceItemObjectList": 1844353
+  }
+}
+
+
+### A_OutbDeliveryItem
+# @name A_OutbDeliveryItem_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryItem(DeliveryDocument='m-28693379',DeliveryDocumentItem='693379')
+Content-Type: application/json
+
+
+### A_OutbDeliveryHeader
+# @name A_OutbDeliveryHeader_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader
+
+
+
+### A_OutbDeliveryHeader
+# @name A_OutbDeliveryHeader_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "r-20435346",
+  "ActualDeliveryRoute": "435346",
+  "Shippinglocationtimezone": "435346",
+  "ActualGoodsMovementDate": "2018-11-18T00:00:00.000Z",
+  "Receivinglocationtimezone": "435346",
+  "ActualGoodsMovementTime": "22:59:53",
+  "BillingDocumentDate": "2009-07-26T00:00:00.000Z",
+  "BillOfLading": "BillOfLading-20435346",
+  "CompleteDeliveryIsDefined": true,
+  "ConfirmationTime": "22:59:53",
+  "CreatedByUser": "ser-20435346",
+  "CreationDate": "2007-09-12T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "CustomerGroup": "46",
+  "DeliveryBlockReason": "46",
+  "DeliveryDate": "2009-10-03T00:00:00.000Z",
+  "DeliveryDocumentBySupplier": "DeliveryDocumentBySupplier-20435346",
+  "DeliveryDocumentType": "5346",
+  "DeliveryIsInPlant": true,
+  "DeliveryPriority": "46",
+  "DeliveryTime": "22:59:53",
+  "DeliveryVersion": "5346",
+  "DepreciationPercentage": 30.98,
+  "DistrStatusByDecentralizedWrhs": "6",
+  "DocumentDate": "2010-12-31T00:00:00.000Z",
+  "ExternalIdentificationType": "6",
+  "ExternalTransportSystem": "35346",
+  "FactoryCalendarByCustomer": "46",
+  "GoodsIssueOrReceiptSlipNumber": "r-20435346",
+  "GoodsIssueTime": "22:59:53",
+  "HandlingUnitInStock": "6",
+  "HdrGeneralIncompletionStatus": "6",
+  "HdrGoodsMvtIncompletionStatus": "6",
+  "HeaderBillgIncompletionStatus": "6",
+  "HeaderBillingBlockReason": "46",
+  "HeaderDelivIncompletionStatus": "6",
+  "HeaderGrossWeight": 54.29,
+  "HeaderNetWeight": 59.308,
+  "HeaderPackingIncompletionSts": "6",
+  "HeaderPickgIncompletionStatus": "6",
+  "HeaderVolume": 38.217,
+  "HeaderVolumeUnit": "346",
+  "HeaderWeightUnit": "346",
+  "IncotermsClassification": "346",
+  "IncotermsTransferLocation": "rmsTransferLocation-20435346",
+  "IntercompanyBillingDate": "2009-07-02T00:00:00.000Z",
+  "InternalFinancialDocument": "t-20435346",
+  "IsDeliveryForSingleWarehouse": "6",
+  "IsExportDelivery": "6",
+  "LastChangeDate": "2001-04-29T00:00:00.000Z",
+  "LastChangedByUser": "ser-20435346",
+  "LoadingDate": "2013-11-30T00:00:00.000Z",
+  "LoadingPoint": "46",
+  "LoadingTime": "22:59:53",
+  "MeansOfTransport": "OfTransport-20435346",
+  "MeansOfTransportRefMaterial": "MeansOfTransportRefMaterial-20435346",
+  "MeansOfTransportType": "5346",
+  "OrderCombinationIsAllowed": true,
+  "OrderID": "rID-20435346",
+  "OverallDelivConfStatus": "6",
+  "OverallDelivReltdBillgStatus": "6",
+  "OverallGoodsMovementStatus": "6",
+  "OverallIntcoBillingStatus": "6",
+  "OverallPackingStatus": "6",
+  "OverallPickingConfStatus": "6",
+  "OverallPickingStatus": "6",
+  "OverallProofOfDeliveryStatus": "6",
+  "OverallSDProcessStatus": "6",
+  "OverallWarehouseActivityStatus": "6",
+  "OvrlItmDelivIncompletionSts": "6",
+  "OvrlItmGdsMvtIncompletionSts": "6",
+  "OvrlItmGeneralIncompletionSts": "6",
+  "OvrlItmPackingIncompletionSts": "6",
+  "OvrlItmPickingIncompletionSts": "6",
+  "PaymentGuaranteeProcedure": "435346",
+  "PickedItemsLocation": "emsLocation-20435346",
+  "PickingDate": "2021-02-15T00:00:00.000Z",
+  "PickingTime": "22:59:53",
+  "PlannedGoodsIssueDate": "2009-04-09T00:00:00.000Z",
+  "ProofOfDeliveryDate": "2014-04-11T00:00:00.000Z",
+  "ProposedDeliveryRoute": "435346",
+  "ReceivingPlant": "5346",
+  "RouteSchedule": "e-20435346",
+  "SalesDistrict": "435346",
+  "SalesOffice": "5346",
+  "SalesOrganization": "5346",
+  "SDDocumentCategory": "5346",
+  "ShipmentBlockReason": "46",
+  "ShippingCondition": "46",
+  "ShippingPoint": "5346",
+  "ShippingType": "46",
+  "ShipToParty": "y-20435346",
+  "SoldToParty": "y-20435346",
+  "SpecialProcessingCode": "5346",
+  "StatisticsCurrency": "35346",
+  "Supplier": "r-20435346",
+  "TotalBlockStatus": "6",
+  "TotalCreditCheckStatus": "6",
+  "TotalNumberOfPackage": "35346",
+  "TransactionCurrency": "35346",
+  "TransportationGroup": "5346",
+  "TransportationPlanningDate": "2004-05-19T00:00:00.000Z",
+  "TransportationPlanningStatus": "6",
+  "TransportationPlanningTime": "22:59:53",
+  "UnloadingPointName": "loadingPointName-20435346",
+  "Warehouse": "346",
+  "WarehouseGate": "346",
+  "WarehouseStagingArea": "a-20435346",
+  "YY1_demo3_DLH": "1_demo3_DLH-20435346",
+  "to_DeliveryDocumentItem": [
+    {
+      "DeliveryDocument": "m-28693379",
+      "DeliveryDocumentItem": "693379",
+      "ActualDeliveredQtyInBaseUnit": 99.108,
+      "ActualDeliveryQuantity": 82.218,
+      "AdditionalCustomerGroup1": "379",
+      "AdditionalCustomerGroup2": "379",
+      "AdditionalCustomerGroup3": "379",
+      "AdditionalCustomerGroup4": "379",
+      "AdditionalCustomerGroup5": "379",
+      "AdditionalMaterialGroup1": "379",
+      "AdditionalMaterialGroup2": "379",
+      "AdditionalMaterialGroup3": "379",
+      "AdditionalMaterialGroup4": "379",
+      "AdditionalMaterialGroup5": "379",
+      "AlternateProductNumber": "AlternateProductNumber-28693379",
+      "BaseUnit": "379",
+      "Batch": "h-28693379",
+      "BatchBySupplier": "pplier-28693379",
+      "BatchClassification": "ification-28693379",
+      "BOMExplosion": "28693379",
+      "BusinessArea": "3379",
+      "ConsumptionPosting": "9",
+      "ControllingArea": "3379",
+      "CostCenter": "r-28693379",
+      "CreatedByUser": "ser-28693379",
+      "CreationDate": "2018-09-16T00:00:00.000Z",
+      "CreationTime": "22:59:53",
+      "CustEngineeringChgStatus": "hgStatus-28693379",
+      "DeliveryDocumentItemCategory": "3379",
+      "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693379",
+      "DeliveryGroup": "379",
+      "DeliveryQuantityUnit": "379",
+      "DeliveryRelatedBillingStatus": "9",
+      "DeliveryToBaseQuantityDnmntr": 58,
+      "DeliveryToBaseQuantityNmrtr": 51,
+      "DeliveryVersion": "3379",
+      "DepartmentClassificationByCust": "3379",
+      "DistributionChannel": "79",
+      "Division": "79",
+      "EUDeliveryItemARCStatus": "9",
+      "FixedShipgProcgDurationInDays": 63.26,
+      "GLAccount": "t-28693379",
+      "GoodsMovementReasonCode": "3379",
+      "GoodsMovementStatus": "9",
+      "GoodsMovementType": "379",
+      "HigherLvlItmOfBatSpltItm": "693379",
+      "HigherLevelItem": "693379",
+      "InspectionLot": "Lot-28693379",
+      "InspectionPartialLot": "693379",
+      "IntercompanyBillingStatus": "9",
+      "InternationalArticleNumber": "cleNumber-28693379",
+      "InventorySpecialStockType": "9",
+      "InventoryValuationType": "e-28693379",
+      "IsCompletelyDelivered": false,
+      "IsNotGoodsMovementsRelevant": "9",
+      "IsSeparateValuation": false,
+      "IssgOrRcvgBatch": "h-28693379",
+      "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693379",
+      "IssgOrRcvgSpclStockInd": "9",
+      "IssgOrRcvgStockCategory": "9",
+      "IssgOrRcvgValuationType": "e-28693379",
+      "IssuingOrReceivingPlant": "3379",
+      "IssuingOrReceivingStorageLoc": "3379",
+      "ItemBillingBlockReason": "79",
+      "ItemBillingIncompletionStatus": "9",
+      "ItemDeliveryIncompletionStatus": "9",
+      "ItemGdsMvtIncompletionSts": "9",
+      "ItemGeneralIncompletionStatus": "9",
+      "ItemGrossWeight": 20.437,
+      "ItemIsBillingRelevant": "9",
+      "ItemNetWeight": 0.168,
+      "ItemPackingIncompletionStatus": "9",
+      "ItemPickingIncompletionStatus": "9",
+      "ItemVolume": 89.202,
+      "ItemVolumeUnit": "379",
+      "ItemWeightUnit": "379",
+      "LastChangeDate": "2005-11-27T00:00:00.000Z",
+      "LoadingGroup": "3379",
+      "ManufactureDate": "2004-06-12T00:00:00.000Z",
+      "Material": "Material-28693379",
+      "MaterialByCustomer": "MaterialByCustomer-28693379",
+      "MaterialFreightGroup": "28693379",
+      "MaterialGroup": "-28693379",
+      "MaterialIsBatchManaged": false,
+      "MaterialIsIntBatchManaged": false,
+      "NumberOfSerialNumbers": 40,
+      "OrderID": "rID-28693379",
+      "OrderItem": "3379",
+      "OriginalDeliveryQuantity": 45.623,
+      "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693379",
+      "OverdelivTolrtdLmtRatioInPct": 94.2,
+      "PackingStatus": "9",
+      "PartialDeliveryIsAllowed": "9",
+      "PaymentGuaranteeForm": "79",
+      "PickingConfirmationStatus": "9",
+      "PickingControl": "9",
+      "PickingStatus": "9",
+      "Plant": "3379",
+      "PrimaryPostingSwitch": "9",
+      "ProductAvailabilityDate": "2004-09-22T00:00:00.000Z",
+      "ProductAvailabilityTime": "22:59:53",
+      "ProductConfiguration": "iguration-28693379",
+      "ProductHierarchyNode": "archyNode-28693379",
+      "ProfitabilitySegment": "t-28693379",
+      "ProfitCenter": "r-28693379",
+      "ProofOfDeliveryRelevanceCode": "9",
+      "ProofOfDeliveryStatus": "9",
+      "QuantityIsFixed": false,
+      "ReceivingPoint": "ReceivingPoint-28693379",
+      "ReferenceDocumentLogicalSystem": "m-28693379",
+      "ReferenceSDDocument": "t-28693379",
+      "ReferenceSDDocumentCategory": "3379",
+      "ReferenceSDDocumentItem": "693379",
+      "RetailPromotion": "n-28693379",
+      "SalesDocumentItemType": "9",
+      "SalesGroup": "379",
+      "SalesOffice": "3379",
+      "SDDocumentCategory": "3379",
+      "SDProcessStatus": "9",
+      "ShelfLifeExpirationDate": "2007-01-03T00:00:00.000Z",
+      "StatisticsDate": "2016-10-24T00:00:00.000Z",
+      "StockType": "9",
+      "StorageBin": "n-28693379",
+      "StorageLocation": "3379",
+      "StorageType": "379",
+      "SubsequentMovementType": "379",
+      "TransportationGroup": "3379",
+      "UnderdelivTolrtdLmtRatioInPct": 12.2,
+      "UnlimitedOverdeliveryIsAllowed": false,
+      "VarblShipgProcgDurationInDays": 73.98,
+      "Warehouse": "379",
+      "WarehouseActivityStatus": "9",
+      "WarehouseStagingArea": "a-28693379",
+      "WarehouseStockCategory": "9",
+      "WarehouseStorageBin": "n-28693379",
+      "to_SerialDeliveryItem": {
+        "MaintenanceItemObjectList": 1844353
+      }
+    },
+    {
+      "DeliveryDocument": "m-28693380",
+      "DeliveryDocumentItem": "693380",
+      "ActualDeliveredQtyInBaseUnit": 91.254,
+      "ActualDeliveryQuantity": 0.695,
+      "AdditionalCustomerGroup1": "380",
+      "AdditionalCustomerGroup2": "380",
+      "AdditionalCustomerGroup3": "380",
+      "AdditionalCustomerGroup4": "380",
+      "AdditionalCustomerGroup5": "380",
+      "AdditionalMaterialGroup1": "380",
+      "AdditionalMaterialGroup2": "380",
+      "AdditionalMaterialGroup3": "380",
+      "AdditionalMaterialGroup4": "380",
+      "AdditionalMaterialGroup5": "380",
+      "AlternateProductNumber": "AlternateProductNumber-28693380",
+      "BaseUnit": "380",
+      "Batch": "h-28693380",
+      "BatchBySupplier": "pplier-28693380",
+      "BatchClassification": "ification-28693380",
+      "BOMExplosion": "28693380",
+      "BusinessArea": "3380",
+      "ConsumptionPosting": "0",
+      "ControllingArea": "3380",
+      "CostCenter": "r-28693380",
+      "CreatedByUser": "ser-28693380",
+      "CreationDate": "2021-12-07T00:00:00.000Z",
+      "CreationTime": "22:59:53",
+      "CustEngineeringChgStatus": "hgStatus-28693380",
+      "DeliveryDocumentItemCategory": "3380",
+      "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693380",
+      "DeliveryGroup": "380",
+      "DeliveryQuantityUnit": "380",
+      "DeliveryRelatedBillingStatus": "0",
+      "DeliveryToBaseQuantityDnmntr": 90,
+      "DeliveryToBaseQuantityNmrtr": 29,
+      "DeliveryVersion": "3380",
+      "DepartmentClassificationByCust": "3380",
+      "DistributionChannel": "80",
+      "Division": "80",
+      "EUDeliveryItemARCStatus": "0",
+      "FixedShipgProcgDurationInDays": 88.37,
+      "GLAccount": "t-28693380",
+      "GoodsMovementReasonCode": "3380",
+      "GoodsMovementStatus": "0",
+      "GoodsMovementType": "380",
+      "HigherLvlItmOfBatSpltItm": "693380",
+      "HigherLevelItem": "693380",
+      "InspectionLot": "Lot-28693380",
+      "InspectionPartialLot": "693380",
+      "IntercompanyBillingStatus": "0",
+      "InternationalArticleNumber": "cleNumber-28693380",
+      "InventorySpecialStockType": "0",
+      "InventoryValuationType": "e-28693380",
+      "IsCompletelyDelivered": true,
+      "IsNotGoodsMovementsRelevant": "0",
+      "IsSeparateValuation": true,
+      "IssgOrRcvgBatch": "h-28693380",
+      "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693380",
+      "IssgOrRcvgSpclStockInd": "0",
+      "IssgOrRcvgStockCategory": "0",
+      "IssgOrRcvgValuationType": "e-28693380",
+      "IssuingOrReceivingPlant": "3380",
+      "IssuingOrReceivingStorageLoc": "3380",
+      "ItemBillingBlockReason": "80",
+      "ItemBillingIncompletionStatus": "0",
+      "ItemDeliveryIncompletionStatus": "0",
+      "ItemGdsMvtIncompletionSts": "0",
+      "ItemGeneralIncompletionStatus": "0",
+      "ItemGrossWeight": 80.258,
+      "ItemIsBillingRelevant": "0",
+      "ItemNetWeight": 65.148,
+      "ItemPackingIncompletionStatus": "0",
+      "ItemPickingIncompletionStatus": "0",
+      "ItemVolume": 22.886,
+      "ItemVolumeUnit": "380",
+      "ItemWeightUnit": "380",
+      "LastChangeDate": "2018-05-05T00:00:00.000Z",
+      "LoadingGroup": "3380",
+      "ManufactureDate": "2013-10-05T00:00:00.000Z",
+      "Material": "Material-28693380",
+      "MaterialByCustomer": "MaterialByCustomer-28693380",
+      "MaterialFreightGroup": "28693380",
+      "MaterialGroup": "-28693380",
+      "MaterialIsBatchManaged": true,
+      "MaterialIsIntBatchManaged": true,
+      "NumberOfSerialNumbers": 28,
+      "OrderID": "rID-28693380",
+      "OrderItem": "3380",
+      "OriginalDeliveryQuantity": 44.385,
+      "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693380",
+      "OverdelivTolrtdLmtRatioInPct": 43.2,
+      "PackingStatus": "0",
+      "PartialDeliveryIsAllowed": "0",
+      "PaymentGuaranteeForm": "80",
+      "PickingConfirmationStatus": "0",
+      "PickingControl": "0",
+      "PickingStatus": "0",
+      "Plant": "3380",
+      "PrimaryPostingSwitch": "0",
+      "ProductAvailabilityDate": "2012-07-18T00:00:00.000Z",
+      "ProductAvailabilityTime": "22:59:53",
+      "ProductConfiguration": "iguration-28693380",
+      "ProductHierarchyNode": "archyNode-28693380",
+      "ProfitabilitySegment": "t-28693380",
+      "ProfitCenter": "r-28693380",
+      "ProofOfDeliveryRelevanceCode": "0",
+      "ProofOfDeliveryStatus": "0",
+      "QuantityIsFixed": true,
+      "ReceivingPoint": "ReceivingPoint-28693380",
+      "ReferenceDocumentLogicalSystem": "m-28693380",
+      "ReferenceSDDocument": "t-28693380",
+      "ReferenceSDDocumentCategory": "3380",
+      "ReferenceSDDocumentItem": "693380",
+      "RetailPromotion": "n-28693380",
+      "SalesDocumentItemType": "0",
+      "SalesGroup": "380",
+      "SalesOffice": "3380",
+      "SDDocumentCategory": "3380",
+      "SDProcessStatus": "0",
+      "ShelfLifeExpirationDate": "2022-01-18T00:00:00.000Z",
+      "StatisticsDate": "2003-05-20T00:00:00.000Z",
+      "StockType": "0",
+      "StorageBin": "n-28693380",
+      "StorageLocation": "3380",
+      "StorageType": "380",
+      "SubsequentMovementType": "380",
+      "TransportationGroup": "3380",
+      "UnderdelivTolrtdLmtRatioInPct": 89.6,
+      "UnlimitedOverdeliveryIsAllowed": true,
+      "VarblShipgProcgDurationInDays": 99.93,
+      "Warehouse": "380",
+      "WarehouseActivityStatus": "0",
+      "WarehouseStagingArea": "a-28693380",
+      "WarehouseStockCategory": "0",
+      "WarehouseStorageBin": "n-28693380",
+      "to_SerialDeliveryItem": {
+        "MaintenanceItemObjectList": 1844353
+      }
+    }
+  ]
+}
+
+
+### A_OutbDeliveryHeader
+# @name A_OutbDeliveryHeader_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader/r-20435346
+Content-Type: application/json
+
+{
+  "DeliveryDocument": "r-20435346",
+  "ActualDeliveryRoute": "435346",
+  "Shippinglocationtimezone": "435346",
+  "ActualGoodsMovementDate": "2018-11-18T00:00:00.000Z",
+  "Receivinglocationtimezone": "435346",
+  "ActualGoodsMovementTime": "22:59:53",
+  "BillingDocumentDate": "2009-07-26T00:00:00.000Z",
+  "BillOfLading": "BillOfLading-20435346",
+  "CompleteDeliveryIsDefined": true,
+  "ConfirmationTime": "22:59:53",
+  "CreatedByUser": "ser-20435346",
+  "CreationDate": "2007-09-12T00:00:00.000Z",
+  "CreationTime": "22:59:53",
+  "CustomerGroup": "46",
+  "DeliveryBlockReason": "46",
+  "DeliveryDate": "2009-10-03T00:00:00.000Z",
+  "DeliveryDocumentBySupplier": "DeliveryDocumentBySupplier-20435346",
+  "DeliveryDocumentType": "5346",
+  "DeliveryIsInPlant": true,
+  "DeliveryPriority": "46",
+  "DeliveryTime": "22:59:53",
+  "DeliveryVersion": "5346",
+  "DepreciationPercentage": 30.98,
+  "DistrStatusByDecentralizedWrhs": "6",
+  "DocumentDate": "2010-12-31T00:00:00.000Z",
+  "ExternalIdentificationType": "6",
+  "ExternalTransportSystem": "35346",
+  "FactoryCalendarByCustomer": "46",
+  "GoodsIssueOrReceiptSlipNumber": "r-20435346",
+  "GoodsIssueTime": "22:59:53",
+  "HandlingUnitInStock": "6",
+  "HdrGeneralIncompletionStatus": "6",
+  "HdrGoodsMvtIncompletionStatus": "6",
+  "HeaderBillgIncompletionStatus": "6",
+  "HeaderBillingBlockReason": "46",
+  "HeaderDelivIncompletionStatus": "6",
+  "HeaderGrossWeight": 54.29,
+  "HeaderNetWeight": 59.308,
+  "HeaderPackingIncompletionSts": "6",
+  "HeaderPickgIncompletionStatus": "6",
+  "HeaderVolume": 38.217,
+  "HeaderVolumeUnit": "346",
+  "HeaderWeightUnit": "346",
+  "IncotermsClassification": "346",
+  "IncotermsTransferLocation": "rmsTransferLocation-20435346",
+  "IntercompanyBillingDate": "2009-07-02T00:00:00.000Z",
+  "InternalFinancialDocument": "t-20435346",
+  "IsDeliveryForSingleWarehouse": "6",
+  "IsExportDelivery": "6",
+  "LastChangeDate": "2001-04-29T00:00:00.000Z",
+  "LastChangedByUser": "ser-20435346",
+  "LoadingDate": "2013-11-30T00:00:00.000Z",
+  "LoadingPoint": "46",
+  "LoadingTime": "22:59:53",
+  "MeansOfTransport": "OfTransport-20435346",
+  "MeansOfTransportRefMaterial": "MeansOfTransportRefMaterial-20435346",
+  "MeansOfTransportType": "5346",
+  "OrderCombinationIsAllowed": true,
+  "OrderID": "rID-20435346",
+  "OverallDelivConfStatus": "6",
+  "OverallDelivReltdBillgStatus": "6",
+  "OverallGoodsMovementStatus": "6",
+  "OverallIntcoBillingStatus": "6",
+  "OverallPackingStatus": "6",
+  "OverallPickingConfStatus": "6",
+  "OverallPickingStatus": "6",
+  "OverallProofOfDeliveryStatus": "6",
+  "OverallSDProcessStatus": "6",
+  "OverallWarehouseActivityStatus": "6",
+  "OvrlItmDelivIncompletionSts": "6",
+  "OvrlItmGdsMvtIncompletionSts": "6",
+  "OvrlItmGeneralIncompletionSts": "6",
+  "OvrlItmPackingIncompletionSts": "6",
+  "OvrlItmPickingIncompletionSts": "6",
+  "PaymentGuaranteeProcedure": "435346",
+  "PickedItemsLocation": "emsLocation-20435346",
+  "PickingDate": "2021-02-15T00:00:00.000Z",
+  "PickingTime": "22:59:53",
+  "PlannedGoodsIssueDate": "2009-04-09T00:00:00.000Z",
+  "ProofOfDeliveryDate": "2014-04-11T00:00:00.000Z",
+  "ProposedDeliveryRoute": "435346",
+  "ReceivingPlant": "5346",
+  "RouteSchedule": "e-20435346",
+  "SalesDistrict": "435346",
+  "SalesOffice": "5346",
+  "SalesOrganization": "5346",
+  "SDDocumentCategory": "5346",
+  "ShipmentBlockReason": "46",
+  "ShippingCondition": "46",
+  "ShippingPoint": "5346",
+  "ShippingType": "46",
+  "ShipToParty": "y-20435346",
+  "SoldToParty": "y-20435346",
+  "SpecialProcessingCode": "5346",
+  "StatisticsCurrency": "35346",
+  "Supplier": "r-20435346",
+  "TotalBlockStatus": "6",
+  "TotalCreditCheckStatus": "6",
+  "TotalNumberOfPackage": "35346",
+  "TransactionCurrency": "35346",
+  "TransportationGroup": "5346",
+  "TransportationPlanningDate": "2004-05-19T00:00:00.000Z",
+  "TransportationPlanningStatus": "6",
+  "TransportationPlanningTime": "22:59:53",
+  "UnloadingPointName": "loadingPointName-20435346",
+  "Warehouse": "346",
+  "WarehouseGate": "346",
+  "WarehouseStagingArea": "a-20435346",
+  "YY1_demo3_DLH": "1_demo3_DLH-20435346",
+  "to_DeliveryDocumentItem": [
+    {
+      "DeliveryDocument": "m-28693379",
+      "DeliveryDocumentItem": "693379",
+      "ActualDeliveredQtyInBaseUnit": 99.108,
+      "ActualDeliveryQuantity": 82.218,
+      "AdditionalCustomerGroup1": "379",
+      "AdditionalCustomerGroup2": "379",
+      "AdditionalCustomerGroup3": "379",
+      "AdditionalCustomerGroup4": "379",
+      "AdditionalCustomerGroup5": "379",
+      "AdditionalMaterialGroup1": "379",
+      "AdditionalMaterialGroup2": "379",
+      "AdditionalMaterialGroup3": "379",
+      "AdditionalMaterialGroup4": "379",
+      "AdditionalMaterialGroup5": "379",
+      "AlternateProductNumber": "AlternateProductNumber-28693379",
+      "BaseUnit": "379",
+      "Batch": "h-28693379",
+      "BatchBySupplier": "pplier-28693379",
+      "BatchClassification": "ification-28693379",
+      "BOMExplosion": "28693379",
+      "BusinessArea": "3379",
+      "ConsumptionPosting": "9",
+      "ControllingArea": "3379",
+      "CostCenter": "r-28693379",
+      "CreatedByUser": "ser-28693379",
+      "CreationDate": "2018-09-16T00:00:00.000Z",
+      "CreationTime": "22:59:53",
+      "CustEngineeringChgStatus": "hgStatus-28693379",
+      "DeliveryDocumentItemCategory": "3379",
+      "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693379",
+      "DeliveryGroup": "379",
+      "DeliveryQuantityUnit": "379",
+      "DeliveryRelatedBillingStatus": "9",
+      "DeliveryToBaseQuantityDnmntr": 58,
+      "DeliveryToBaseQuantityNmrtr": 51,
+      "DeliveryVersion": "3379",
+      "DepartmentClassificationByCust": "3379",
+      "DistributionChannel": "79",
+      "Division": "79",
+      "EUDeliveryItemARCStatus": "9",
+      "FixedShipgProcgDurationInDays": 63.26,
+      "GLAccount": "t-28693379",
+      "GoodsMovementReasonCode": "3379",
+      "GoodsMovementStatus": "9",
+      "GoodsMovementType": "379",
+      "HigherLvlItmOfBatSpltItm": "693379",
+      "HigherLevelItem": "693379",
+      "InspectionLot": "Lot-28693379",
+      "InspectionPartialLot": "693379",
+      "IntercompanyBillingStatus": "9",
+      "InternationalArticleNumber": "cleNumber-28693379",
+      "InventorySpecialStockType": "9",
+      "InventoryValuationType": "e-28693379",
+      "IsCompletelyDelivered": false,
+      "IsNotGoodsMovementsRelevant": "9",
+      "IsSeparateValuation": false,
+      "IssgOrRcvgBatch": "h-28693379",
+      "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693379",
+      "IssgOrRcvgSpclStockInd": "9",
+      "IssgOrRcvgStockCategory": "9",
+      "IssgOrRcvgValuationType": "e-28693379",
+      "IssuingOrReceivingPlant": "3379",
+      "IssuingOrReceivingStorageLoc": "3379",
+      "ItemBillingBlockReason": "79",
+      "ItemBillingIncompletionStatus": "9",
+      "ItemDeliveryIncompletionStatus": "9",
+      "ItemGdsMvtIncompletionSts": "9",
+      "ItemGeneralIncompletionStatus": "9",
+      "ItemGrossWeight": 20.437,
+      "ItemIsBillingRelevant": "9",
+      "ItemNetWeight": 0.168,
+      "ItemPackingIncompletionStatus": "9",
+      "ItemPickingIncompletionStatus": "9",
+      "ItemVolume": 89.202,
+      "ItemVolumeUnit": "379",
+      "ItemWeightUnit": "379",
+      "LastChangeDate": "2005-11-27T00:00:00.000Z",
+      "LoadingGroup": "3379",
+      "ManufactureDate": "2004-06-12T00:00:00.000Z",
+      "Material": "Material-28693379",
+      "MaterialByCustomer": "MaterialByCustomer-28693379",
+      "MaterialFreightGroup": "28693379",
+      "MaterialGroup": "-28693379",
+      "MaterialIsBatchManaged": false,
+      "MaterialIsIntBatchManaged": false,
+      "NumberOfSerialNumbers": 40,
+      "OrderID": "rID-28693379",
+      "OrderItem": "3379",
+      "OriginalDeliveryQuantity": 45.623,
+      "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693379",
+      "OverdelivTolrtdLmtRatioInPct": 94.2,
+      "PackingStatus": "9",
+      "PartialDeliveryIsAllowed": "9",
+      "PaymentGuaranteeForm": "79",
+      "PickingConfirmationStatus": "9",
+      "PickingControl": "9",
+      "PickingStatus": "9",
+      "Plant": "3379",
+      "PrimaryPostingSwitch": "9",
+      "ProductAvailabilityDate": "2004-09-22T00:00:00.000Z",
+      "ProductAvailabilityTime": "22:59:53",
+      "ProductConfiguration": "iguration-28693379",
+      "ProductHierarchyNode": "archyNode-28693379",
+      "ProfitabilitySegment": "t-28693379",
+      "ProfitCenter": "r-28693379",
+      "ProofOfDeliveryRelevanceCode": "9",
+      "ProofOfDeliveryStatus": "9",
+      "QuantityIsFixed": false,
+      "ReceivingPoint": "ReceivingPoint-28693379",
+      "ReferenceDocumentLogicalSystem": "m-28693379",
+      "ReferenceSDDocument": "t-28693379",
+      "ReferenceSDDocumentCategory": "3379",
+      "ReferenceSDDocumentItem": "693379",
+      "RetailPromotion": "n-28693379",
+      "SalesDocumentItemType": "9",
+      "SalesGroup": "379",
+      "SalesOffice": "3379",
+      "SDDocumentCategory": "3379",
+      "SDProcessStatus": "9",
+      "ShelfLifeExpirationDate": "2007-01-03T00:00:00.000Z",
+      "StatisticsDate": "2016-10-24T00:00:00.000Z",
+      "StockType": "9",
+      "StorageBin": "n-28693379",
+      "StorageLocation": "3379",
+      "StorageType": "379",
+      "SubsequentMovementType": "379",
+      "TransportationGroup": "3379",
+      "UnderdelivTolrtdLmtRatioInPct": 12.2,
+      "UnlimitedOverdeliveryIsAllowed": false,
+      "VarblShipgProcgDurationInDays": 73.98,
+      "Warehouse": "379",
+      "WarehouseActivityStatus": "9",
+      "WarehouseStagingArea": "a-28693379",
+      "WarehouseStockCategory": "9",
+      "WarehouseStorageBin": "n-28693379",
+      "to_SerialDeliveryItem": {
+        "MaintenanceItemObjectList": 1844353
+      }
+    },
+    {
+      "DeliveryDocument": "m-28693380",
+      "DeliveryDocumentItem": "693380",
+      "ActualDeliveredQtyInBaseUnit": 91.254,
+      "ActualDeliveryQuantity": 0.695,
+      "AdditionalCustomerGroup1": "380",
+      "AdditionalCustomerGroup2": "380",
+      "AdditionalCustomerGroup3": "380",
+      "AdditionalCustomerGroup4": "380",
+      "AdditionalCustomerGroup5": "380",
+      "AdditionalMaterialGroup1": "380",
+      "AdditionalMaterialGroup2": "380",
+      "AdditionalMaterialGroup3": "380",
+      "AdditionalMaterialGroup4": "380",
+      "AdditionalMaterialGroup5": "380",
+      "AlternateProductNumber": "AlternateProductNumber-28693380",
+      "BaseUnit": "380",
+      "Batch": "h-28693380",
+      "BatchBySupplier": "pplier-28693380",
+      "BatchClassification": "ification-28693380",
+      "BOMExplosion": "28693380",
+      "BusinessArea": "3380",
+      "ConsumptionPosting": "0",
+      "ControllingArea": "3380",
+      "CostCenter": "r-28693380",
+      "CreatedByUser": "ser-28693380",
+      "CreationDate": "2021-12-07T00:00:00.000Z",
+      "CreationTime": "22:59:53",
+      "CustEngineeringChgStatus": "hgStatus-28693380",
+      "DeliveryDocumentItemCategory": "3380",
+      "DeliveryDocumentItemText": "DeliveryDocumentItemText-28693380",
+      "DeliveryGroup": "380",
+      "DeliveryQuantityUnit": "380",
+      "DeliveryRelatedBillingStatus": "0",
+      "DeliveryToBaseQuantityDnmntr": 90,
+      "DeliveryToBaseQuantityNmrtr": 29,
+      "DeliveryVersion": "3380",
+      "DepartmentClassificationByCust": "3380",
+      "DistributionChannel": "80",
+      "Division": "80",
+      "EUDeliveryItemARCStatus": "0",
+      "FixedShipgProcgDurationInDays": 88.37,
+      "GLAccount": "t-28693380",
+      "GoodsMovementReasonCode": "3380",
+      "GoodsMovementStatus": "0",
+      "GoodsMovementType": "380",
+      "HigherLvlItmOfBatSpltItm": "693380",
+      "HigherLevelItem": "693380",
+      "InspectionLot": "Lot-28693380",
+      "InspectionPartialLot": "693380",
+      "IntercompanyBillingStatus": "0",
+      "InternationalArticleNumber": "cleNumber-28693380",
+      "InventorySpecialStockType": "0",
+      "InventoryValuationType": "e-28693380",
+      "IsCompletelyDelivered": true,
+      "IsNotGoodsMovementsRelevant": "0",
+      "IsSeparateValuation": true,
+      "IssgOrRcvgBatch": "h-28693380",
+      "IssgOrRcvgMaterial": "IssgOrRcvgMaterial-28693380",
+      "IssgOrRcvgSpclStockInd": "0",
+      "IssgOrRcvgStockCategory": "0",
+      "IssgOrRcvgValuationType": "e-28693380",
+      "IssuingOrReceivingPlant": "3380",
+      "IssuingOrReceivingStorageLoc": "3380",
+      "ItemBillingBlockReason": "80",
+      "ItemBillingIncompletionStatus": "0",
+      "ItemDeliveryIncompletionStatus": "0",
+      "ItemGdsMvtIncompletionSts": "0",
+      "ItemGeneralIncompletionStatus": "0",
+      "ItemGrossWeight": 80.258,
+      "ItemIsBillingRelevant": "0",
+      "ItemNetWeight": 65.148,
+      "ItemPackingIncompletionStatus": "0",
+      "ItemPickingIncompletionStatus": "0",
+      "ItemVolume": 22.886,
+      "ItemVolumeUnit": "380",
+      "ItemWeightUnit": "380",
+      "LastChangeDate": "2018-05-05T00:00:00.000Z",
+      "LoadingGroup": "3380",
+      "ManufactureDate": "2013-10-05T00:00:00.000Z",
+      "Material": "Material-28693380",
+      "MaterialByCustomer": "MaterialByCustomer-28693380",
+      "MaterialFreightGroup": "28693380",
+      "MaterialGroup": "-28693380",
+      "MaterialIsBatchManaged": true,
+      "MaterialIsIntBatchManaged": true,
+      "NumberOfSerialNumbers": 28,
+      "OrderID": "rID-28693380",
+      "OrderItem": "3380",
+      "OriginalDeliveryQuantity": 44.385,
+      "OriginallyRequestedMaterial": "OriginallyRequestedMaterial-28693380",
+      "OverdelivTolrtdLmtRatioInPct": 43.2,
+      "PackingStatus": "0",
+      "PartialDeliveryIsAllowed": "0",
+      "PaymentGuaranteeForm": "80",
+      "PickingConfirmationStatus": "0",
+      "PickingControl": "0",
+      "PickingStatus": "0",
+      "Plant": "3380",
+      "PrimaryPostingSwitch": "0",
+      "ProductAvailabilityDate": "2012-07-18T00:00:00.000Z",
+      "ProductAvailabilityTime": "22:59:53",
+      "ProductConfiguration": "iguration-28693380",
+      "ProductHierarchyNode": "archyNode-28693380",
+      "ProfitabilitySegment": "t-28693380",
+      "ProfitCenter": "r-28693380",
+      "ProofOfDeliveryRelevanceCode": "0",
+      "ProofOfDeliveryStatus": "0",
+      "QuantityIsFixed": true,
+      "ReceivingPoint": "ReceivingPoint-28693380",
+      "ReferenceDocumentLogicalSystem": "m-28693380",
+      "ReferenceSDDocument": "t-28693380",
+      "ReferenceSDDocumentCategory": "3380",
+      "ReferenceSDDocumentItem": "693380",
+      "RetailPromotion": "n-28693380",
+      "SalesDocumentItemType": "0",
+      "SalesGroup": "380",
+      "SalesOffice": "3380",
+      "SDDocumentCategory": "3380",
+      "SDProcessStatus": "0",
+      "ShelfLifeExpirationDate": "2022-01-18T00:00:00.000Z",
+      "StatisticsDate": "2003-05-20T00:00:00.000Z",
+      "StockType": "0",
+      "StorageBin": "n-28693380",
+      "StorageLocation": "3380",
+      "StorageType": "380",
+      "SubsequentMovementType": "380",
+      "TransportationGroup": "3380",
+      "UnderdelivTolrtdLmtRatioInPct": 89.6,
+      "UnlimitedOverdeliveryIsAllowed": true,
+      "VarblShipgProcgDurationInDays": 99.93,
+      "Warehouse": "380",
+      "WarehouseActivityStatus": "0",
+      "WarehouseStagingArea": "a-28693380",
+      "WarehouseStockCategory": "0",
+      "WarehouseStorageBin": "n-28693380",
+      "to_SerialDeliveryItem": {
+        "MaintenanceItemObjectList": 1844353
+      }
+    }
+  ]
+}
+
+
+### A_OutbDeliveryHeader
+# @name A_OutbDeliveryHeader_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader/r-20435346
+Content-Type: application/json
+
+
+### A_OutbDeliveryDocFlow
+# @name A_OutbDeliveryDocFlow_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryDocFlow
+
+
+
+### A_OutbDeliveryDocFlow
+# @name A_OutbDeliveryDocFlow_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryDocFlow
+Content-Type: application/json
+
+{
+  "PrecedingDocument": "w-11810696",
+  "PrecedingDocumentItem": "810696",
+  "SubsequentDocumentCategory": "0696",
+  "Deliveryversion": "0696",
+  "PrecedingDocumentCategory": "0696",
+  "Subsequentdocument": "t-11810696",
+  "QuantityInBaseUnit": 99.101,
+  "SubsequentDocumentItem": "810696",
+  "SDFulfillmentCalculationRule": "6",
+  "TransferOrderInWrhsMgmtIsConfd": true
+}
+
+
+### A_OutbDeliveryDocFlow
+# @name A_OutbDeliveryDocFlow_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryDocFlow(PrecedingDocument='w-11810696',PrecedingDocumentItem='810696',SubsequentDocumentCategory='0696')
+Content-Type: application/json
+
+{
+  "PrecedingDocument": "w-11810696",
+  "PrecedingDocumentItem": "810696",
+  "SubsequentDocumentCategory": "0696",
+  "Deliveryversion": "0696",
+  "PrecedingDocumentCategory": "0696",
+  "Subsequentdocument": "t-11810696",
+  "QuantityInBaseUnit": 99.101,
+  "SubsequentDocumentItem": "810696",
+  "SDFulfillmentCalculationRule": "6",
+  "TransferOrderInWrhsMgmtIsConfd": true
+}
+
+
+### A_OutbDeliveryDocFlow
+# @name A_OutbDeliveryDocFlow_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryDocFlow(PrecedingDocument='w-11810696',PrecedingDocumentItem='810696',SubsequentDocumentCategory='0696')
+Content-Type: application/json
+
+
+### A_MaintenanceItemObject
+# @name A_MaintenanceItemObject_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_MaintenanceItemObject
+
+
+
+### A_MaintenanceItemObject
+# @name A_MaintenanceItemObject_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_MaintenanceItemObject
+Content-Type: application/json
+
+{
+  "MaintenanceItemObject": 5514054,
+  "MaintenanceItemObjectList": 5514054,
+  "Assembly": "Assembly-5514054",
+  "Equipment": "Equipment-5514054",
+  "FunctionalLocation": "FunctionalLocation-5514054",
+  "MaintenanceNotification": "tion-5514054",
+  "MaintObjectLocAcctAssgmtNmbr": "Nmbr-5514054",
+  "Material": "Material-5514054",
+  "SerialNumber": "rialNumber-5514054"
+}
+
+
+### A_MaintenanceItemObject
+# @name A_MaintenanceItemObject_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_MaintenanceItemObject(MaintenanceItemObject=5514054,MaintenanceItemObjectList=5514054)
+Content-Type: application/json
+
+{
+  "MaintenanceItemObject": 5514054,
+  "MaintenanceItemObjectList": 5514054,
+  "Assembly": "Assembly-5514054",
+  "Equipment": "Equipment-5514054",
+  "FunctionalLocation": "FunctionalLocation-5514054",
+  "MaintenanceNotification": "tion-5514054",
+  "MaintObjectLocAcctAssgmtNmbr": "Nmbr-5514054",
+  "Material": "Material-5514054",
+  "SerialNumber": "rialNumber-5514054"
+}
+
+
+### A_MaintenanceItemObject
+# @name A_MaintenanceItemObject_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_MaintenanceItemObject(MaintenanceItemObject=5514054,MaintenanceItemObjectList=5514054)
+Content-Type: application/json
+
+
+### A_SerialNmbrDelivery
+# @name A_SerialNmbrDelivery_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_SerialNmbrDelivery
+
+
+
+### A_SerialNmbrDelivery
+# @name A_SerialNmbrDelivery_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_SerialNmbrDelivery
+Content-Type: application/json
+
+{
+  "MaintenanceItemObjectList": 1844353,
+  "DeliveryDate": "2011-03-10T00:00:00.000Z",
+  "DeliveryDocument": "nt-1844353",
+  "DeliveryDocumentItem": "844353",
+  "SDDocumentCategory": "4353"
+}
+
+
+### A_SerialNmbrDelivery
+# @name A_SerialNmbrDelivery_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_SerialNmbrDelivery/1844353
+Content-Type: application/json
+
+{
+  "MaintenanceItemObjectList": 1844353,
+  "DeliveryDate": "2011-03-10T00:00:00.000Z",
+  "DeliveryDocument": "nt-1844353",
+  "DeliveryDocumentItem": "844353",
+  "SDDocumentCategory": "4353"
+}
+
+
+### A_SerialNmbrDelivery
+# @name A_SerialNmbrDelivery_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_SerialNmbrDelivery/1844353
+Content-Type: application/json
+
+
+### A_OutbDeliveryPartner
+# @name A_OutbDeliveryPartner_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryPartner
+
+
+
+### A_OutbDeliveryPartner
+# @name A_OutbDeliveryPartner_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryPartner
+Content-Type: application/json
+
+{
+  "PartnerFunction": "36",
+  "SDDocument": "r-16734136",
+  "AddressID": "D-16734136",
+  "BusinessPartnerAddressUUID": "16734136-3754-4a61-aa0a-731e44168349",
+  "RefBusinessPartnerAddressUUID": "16734136-4aaf-4b5b-8d2f-78c4f524e2b6",
+  "ContactPerson": "n-16734136",
+  "Customer": "r-16734136",
+  "Personnel": "16734136",
+  "SDDocumentItem": "734136",
+  "Supplier": "r-16734136",
+  "to_Address2": {
+    "DeliveryDocument": "s2-8759917",
+    "PartnerFunction": "17"
+  },
+  "to_Address": {
+    "AddressID": "s-14565691",
+    "POBox": "s-14565691",
+    "POBoxDeviatingCountry": "691"
+  }
+}
+
+
+### A_OutbDeliveryPartner
+# @name A_OutbDeliveryPartner_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryPartner(PartnerFunction='36',SDDocument='r-16734136')
+Content-Type: application/json
+
+{
+  "PartnerFunction": "36",
+  "SDDocument": "r-16734136",
+  "AddressID": "D-16734136",
+  "BusinessPartnerAddressUUID": "16734136-3754-4a61-aa0a-731e44168349",
+  "RefBusinessPartnerAddressUUID": "16734136-4aaf-4b5b-8d2f-78c4f524e2b6",
+  "ContactPerson": "n-16734136",
+  "Customer": "r-16734136",
+  "Personnel": "16734136",
+  "SDDocumentItem": "734136",
+  "Supplier": "r-16734136",
+  "to_Address2": {
+    "DeliveryDocument": "s2-8759917",
+    "PartnerFunction": "17"
+  },
+  "to_Address": {
+    "AddressID": "s-14565691",
+    "POBox": "s-14565691",
+    "POBoxDeviatingCountry": "691"
+  }
+}
+
+
+### A_OutbDeliveryPartner
+# @name A_OutbDeliveryPartner_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryPartner(PartnerFunction='36',SDDocument='r-16734136')
+Content-Type: application/json
+
+
+### A_OutbDeliveryAddress
+# @name A_OutbDeliveryAddress_GET
+GET {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress
+
+
+
+### A_OutbDeliveryAddress
+# @name A_OutbDeliveryAddress_POST
+POST {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress
+Content-Type: application/json
+
+{
+  "AddressID": "s-14565691",
+  "POBox": "s-14565691",
+  "POBoxDeviatingCountry": "691",
+  "AdditionalStreetPrefixName": "AdditionalStreetPrefixName-14565691",
+  "AdditionalStreetSuffixName": "AdditionalStreetSuffixName-14565691",
+  "AddressTimeZone": "565691",
+  "Building": "Building-14565691",
+  "BusinessPartnerName1": "BusinessPartnerName1-14565691",
+  "BusinessPartnerName2": "BusinessPartnerName2-14565691",
+  "BusinessPartnerName3": "BusinessPartnerName3-14565691",
+  "BusinessPartnerName4": "BusinessPartnerName4-14565691",
+  "CareOfName": "CareOfName-14565691",
+  "CityCode": "ode-14565691",
+  "CityName": "CityName-14565691",
+  "CitySearch": "CitySearch-14565691",
+  "CompanyPostalCode": "e-14565691",
+  "CorrespondenceLanguage": "91",
+  "Country": "691",
+  "County": "County-14565691",
+  "DeliveryServiceNumber": "r-14565691",
+  "DeliveryServiceTypeCode": "5691",
+  "District": "District-14565691",
+  "FaxNumber": "FaxNumber-14565691",
+  "Floor": "r-14565691",
+  "FormOfAddress": "5691",
+  "FullName": "FullName-14565691",
+  "HomeCityName": "HomeCityName-14565691",
+  "HouseNumber": "r-14565691",
+  "HouseNumberSupplementText": "t-14565691",
+  "Nation": "1",
+  "Person": "n-14565691",
+  "PhoneNumber": "PhoneNumber-14565691",
+  "POBoxDeviatingCityName": "POBoxDeviatingCityName-14565691",
+  "POBoxDeviatingRegion": "691",
+  "POBoxIsWithoutNumber": false,
+  "POBoxLobbyName": "POBoxLobbyName-14565691",
+  "POBoxPostalCode": "e-14565691",
+  "PostalCode": "e-14565691",
+  "PrfrdCommMediumType": "691",
+  "Region": "691",
+  "RoomNumber": "r-14565691",
+  "SearchTerm1": "SearchTerm1-14565691",
+  "StreetName": "StreetName-14565691",
+  "StreetPrefixName": "StreetPrefixName-14565691",
+  "StreetSearch": "StreetSearch-14565691",
+  "StreetSuffixName": "StreetSuffixName-14565691",
+  "TaxJurisdiction": "iction-14565691",
+  "TransportZone": "e-14565691"
+}
+
+
+### A_OutbDeliveryAddress
+# @name A_OutbDeliveryAddress_PATCH
+PATCH {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress(AddressID='s-14565691',POBox='s-14565691',POBoxDeviatingCountry='691')
+Content-Type: application/json
+
+{
+  "AddressID": "s-14565691",
+  "POBox": "s-14565691",
+  "POBoxDeviatingCountry": "691",
+  "AdditionalStreetPrefixName": "AdditionalStreetPrefixName-14565691",
+  "AdditionalStreetSuffixName": "AdditionalStreetSuffixName-14565691",
+  "AddressTimeZone": "565691",
+  "Building": "Building-14565691",
+  "BusinessPartnerName1": "BusinessPartnerName1-14565691",
+  "BusinessPartnerName2": "BusinessPartnerName2-14565691",
+  "BusinessPartnerName3": "BusinessPartnerName3-14565691",
+  "BusinessPartnerName4": "BusinessPartnerName4-14565691",
+  "CareOfName": "CareOfName-14565691",
+  "CityCode": "ode-14565691",
+  "CityName": "CityName-14565691",
+  "CitySearch": "CitySearch-14565691",
+  "CompanyPostalCode": "e-14565691",
+  "CorrespondenceLanguage": "91",
+  "Country": "691",
+  "County": "County-14565691",
+  "DeliveryServiceNumber": "r-14565691",
+  "DeliveryServiceTypeCode": "5691",
+  "District": "District-14565691",
+  "FaxNumber": "FaxNumber-14565691",
+  "Floor": "r-14565691",
+  "FormOfAddress": "5691",
+  "FullName": "FullName-14565691",
+  "HomeCityName": "HomeCityName-14565691",
+  "HouseNumber": "r-14565691",
+  "HouseNumberSupplementText": "t-14565691",
+  "Nation": "1",
+  "Person": "n-14565691",
+  "PhoneNumber": "PhoneNumber-14565691",
+  "POBoxDeviatingCityName": "POBoxDeviatingCityName-14565691",
+  "POBoxDeviatingRegion": "691",
+  "POBoxIsWithoutNumber": false,
+  "POBoxLobbyName": "POBoxLobbyName-14565691",
+  "POBoxPostalCode": "e-14565691",
+  "PostalCode": "e-14565691",
+  "PrfrdCommMediumType": "691",
+  "Region": "691",
+  "RoomNumber": "r-14565691",
+  "SearchTerm1": "SearchTerm1-14565691",
+  "StreetName": "StreetName-14565691",
+  "StreetPrefixName": "StreetPrefixName-14565691",
+  "StreetSearch": "StreetSearch-14565691",
+  "StreetSuffixName": "StreetSuffixName-14565691",
+  "TaxJurisdiction": "iction-14565691",
+  "TransportZone": "e-14565691"
+}
+
+
+### A_OutbDeliveryAddress
+# @name A_OutbDeliveryAddress_DELETE
+DELETE {{server}}/odata/v4/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryAddress(AddressID='s-14565691',POBox='s-14565691',POBoxDeviatingCountry='691')
+Content-Type: application/json

@@ -1,0 +1,38 @@
+---
+spring:
+  profiles:
+    active: mocked
+
+---
+spring:
+  config.activate.on-profile: default
+cds:
+  data-source.auto-config.enabled: false
+  remote.services:
+    '[API_OUTBOUND_DELIVERY_SRV]':
+      type: "odata-v2"
+      http:
+        suffix: "/sap/opu/odata/sap/"
+      destination:
+        name: "O5P"
+logging:
+  level:
+    root: info
+
+---
+spring:
+  config.activate.on-profile: mocked
+  devtoots.add-properties: true
+cds:
+  data-source.auto-config.enabled: false
+  remote.services:
+    '[API_OUTBOUND_DELIVERY_SRV]':
+      type: "odata-v2"
+      http:
+        suffix: "/sap/opu/odata/sap/"
+      destination:
+        name: "O5P"
+logging:
+  level:
+    root: info
+    web: DEBUG

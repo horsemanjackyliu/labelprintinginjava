@@ -1,0 +1,24 @@
+@server = http://localhost:8080
+
+
+### OutbDeliveryHeader
+# @name OutbDeliveryHeader_GET
+GET {{server}}/odata/v4/DNService/OutbDeliveryHeader
+
+
+
+### OutbDeliveryItem
+# @name OutbDeliveryItem_GET
+GET {{server}}/odata/v4/DNService/OutbDeliveryItem
+
+
+###  getTemplate
+# @name getTemplate
+GET {{server}}/odata/v4/DNService/getTemplates()
+
+
+
+###  getPrintQ
+# @name getPrintQs   
+GET {{server}}/odata/v4/DNService/getPrintQs()
+
