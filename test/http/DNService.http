@@ -22,3 +22,33 @@ GET {{server}}/odata/v4/DNService/getTemplates()
 # @name getPrintQs   
 GET {{server}}/odata/v4/DNService/getPrintQs()
 
+
+###  getHeaderbyKey
+# @name getHeaderbyKey   
+
+GET {{server}}/odata/v4/DNService/OutbDeliveryHeader(DeliveryDocument='80000002')/Items(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprinting')
+
+
+
+###  getmetadata
+# @name getmetadata
+GET {{server}}/odata/v4/DNService/$metadata
+
+
+###  render
+# @name render
+GET {{server}}/odata/v4/DNService/render()
+
+
+
+###  itenrender 
+# @name itenrender 
+
+GET {{server}}/odata/v4/DNService/OutbDeliveryItem(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprinting')
+
+
+
+###  itemmeatadata
+# @name itemmeatadata
+
+GET {{server}}/odata/v4/DNService/$metadata#OutbDeliveryItem

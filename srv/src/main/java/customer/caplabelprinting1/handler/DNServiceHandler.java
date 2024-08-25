@@ -3,6 +3,7 @@ package customer.caplabelprinting1.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +23,11 @@ import cds.gen.dnservice.DNService_;
 import cds.gen.dnservice.GetPrintQsContext;
 import cds.gen.dnservice.GetTemplatesContext;
 import cds.gen.dnservice.OutbDeliveryHeader_;
+import cds.gen.dnservice.OutbDeliveryItemRenderAndPrintContext;
 import cds.gen.dnservice.OutbDeliveryItemRenderContext;
 import cds.gen.dnservice.OutbDeliveryItem_;
+import customer.caplabelprinting1.gen.ads.api.StoreFormTemplatesApi;
+import customer.caplabelprinting1.gen.ads.api.StoreFormsApi;
 
 @Component
 
@@ -34,7 +38,8 @@ public class DNServiceHandler implements EventHandler {
     private final CqnAnalyzer cqnAnalyzer;
     private final ApiOutboundDeliverySrv dnapi;
 
-    DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi, CdsModel cdsModel) {
+
+    DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi,CdsModel cdsModel) {
         this.dnapi = dnapi;
         this.cqnAnalyzer = CqnAnalyzer.create(cdsModel);
     }
@@ -74,11 +79,27 @@ public class DNServiceHandler implements EventHandler {
     }
 
 
-    // @On(entity = OutbDeliveryItem_.CDS_NAME)
-    // public void render(OutbDeliveryItemRenderContext context) {
+    @On(entity = OutbDeliveryItem_.CDS_NAME)
+    public void render(OutbDeliveryItemRenderContext context) {
+        String sTemplate = context.getTemplate();
 
-    //     context.setResult(null);
-    // }
+        byte result[];
+        result = new byte[3] ;
+        result[0] = 10;
+        result[1] = 20;
+        result[2] =30 ;
+        context.setResult(result);
+    }
+
+
+
+    @On(entity = OutbDeliveryItem_.CDS_NAME)
+    public void renderAndPrint(OutbDeliveryItemRenderAndPrintContext context) {
+        String sTemplate = context.getTemplate();
+        String sPrintQ = context.getPrintQ();
+
+        context.setResult("Print task created");
+    }
 
 
 
