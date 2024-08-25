@@ -26,8 +26,8 @@ import cds.gen.dnservice.OutbDeliveryHeader_;
 import cds.gen.dnservice.OutbDeliveryItemRenderAndPrintContext;
 import cds.gen.dnservice.OutbDeliveryItemRenderContext;
 import cds.gen.dnservice.OutbDeliveryItem_;
-import customer.caplabelprinting1.gen.ads.api.StoreFormTemplatesApi;
-import customer.caplabelprinting1.gen.ads.api.StoreFormsApi;
+
+
 
 @Component
 
@@ -37,6 +37,7 @@ public class DNServiceHandler implements EventHandler {
 
     private final CqnAnalyzer cqnAnalyzer;
     private final ApiOutboundDeliverySrv dnapi;
+    private final StoreFormApi storeFormApi;
 
 
     DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi,CdsModel cdsModel) {

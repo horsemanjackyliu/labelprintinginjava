@@ -183,7 +183,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>com.sap.cloud.sdk.datamodel</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
 				<version>5.11.0</version>
@@ -194,24 +194,24 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
+				<!-- <configuration>
 					<inputSpec>${project.basedir}/external/btpservice/PRINTAPI.yaml</inputSpec>
-					<outputDirectory>${project.basedir}/src/main/java/customer/caplabelprinting1/gen/print</outputDirectory>
-					<deleteOutputDirectory>true</deleteOutputDirectory>
-					<apiPackage>customer.caplabelprinting1.gen.print.api</apiPackage>
-					<modelPackage>customer.caplabelprinting1.gen.print.model</modelPackage>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<deleteOutputDirectory>false</deleteOutputDirectory>
+					<apiPackage>customer.caplabelprinting1.btpservice.print.api</apiPackage>
+					<modelPackage>customer.caplabelprinting1.btpservice.print.model</modelPackage>
 					<apiMaturity>released</apiMaturity>
-				</configuration>
+				</configuration> -->
 				<configuration>
 					<inputSpec>${project.basedir}/external/btpservice/CF_ADSRestAPI.json</inputSpec>
 					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-					<deleteOutputDirectory>true</deleteOutputDirectory>
-					<apiPackage>customer.caplabelprinting1.gen.ads.api</apiPackage>
-					<modelPackage>customer.caplabelprinting1.gen.ads.model</modelPackage>
+					<deleteOutputDirectory>false</deleteOutputDirectory>
+					<apiPackage>customer.caplabelprinting1.btpservice.ads.api</apiPackage>
+					<modelPackage>customer.caplabelprinting1.btpservice.ads.model</modelPackage>
 					<validateSpec>false</validateSpec>
 					<apiMaturity>released</apiMaturity>
 				</configuration>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 
