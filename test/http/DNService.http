@@ -4,12 +4,13 @@
 ### OutbDeliveryHeader
 # @name OutbDeliveryHeader_GET
 GET {{server}}/odata/v4/DNService/OutbDeliveryHeader
-
+Authorization: Basic jacky:654123
 
 
 ### OutbDeliveryItem
 # @name OutbDeliveryItem_GET
 GET {{server}}/odata/v4/DNService/OutbDeliveryItem
+Authorization: Basic jacky:654123
 
 
 ###  getTemplate
