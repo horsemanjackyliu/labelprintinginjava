@@ -1,34 +1,81 @@
 @server = http://localhost:8080
 
+@tokenuri = https://apjextabapsubdomain.authentication.eu10.hana.ondemand.com/oauth/token
+@clientid = sb-caplabelprinting1-APJEXTABAPORG-dev!t149617
+@clientsecret = mPqEf8Q3zJbIJet90X9w9sgEQDo=
+@serviceurl = https://apjextabaporg-dev-caplabelprinting1-srv.cfapps.eu10.hana.ondemand.com
+
+###
+
+# @name getToken
+POST {{tokenuri}} HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{clientid}}:{{clientsecret}}
+
+client_id={{clientid}}
+&grant_type=client_credentials
+
+
+### 
+# @name OutbDeliveryItem_render
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/OutbDeliveryItem(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprint3|labelprint3') HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 
 ### OutbDeliveryHeader
 # @name OutbDeliveryHeader_GET
-GET {{server}}/odata/v4/DNService/OutbDeliveryHeader
-Authorization: Basic jacky:654123
+GET {{serviceurl}}/odata/v4/DNService/OutbDeliveryHeader
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 
 ### OutbDeliveryItem
 # @name OutbDeliveryItem_GET
-GET {{server}}/odata/v4/DNService/OutbDeliveryItem
-Authorization: Basic jacky:654123
+
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/OutbDeliveryItem
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+
 
 
 ###  getTemplate
 # @name getTemplate
-GET {{server}}/odata/v4/DNService/getTemplates()
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/getTemplates()
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 
 
 
 ###  getPrintQ
 # @name getPrintQs   
-GET {{server}}/odata/v4/DNService/getPrintQs()
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/getPrintQs()
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 
 
 ###  getHeaderbyKey
 # @name getHeaderbyKey   
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/OutbDeliveryHeader(DeliveryDocument='80000002')/Items(DeliveryDocument='80000002',DeliveryDocumentItem='000010')
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
-GET {{server}}/odata/v4/DNService/OutbDeliveryHeader(DeliveryDocument='80000002')/Items(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprinting')
 
+###  getHeaderrednder
+# @name getHeaderrednder
+@authToken = {{getToken.response.body.access_token}}
+GET {{serviceurl}}/odata/v4/DNService/OutbDeliveryHeader(DeliveryDocument='80000002')/Items(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprint3//labelprint3')
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 
 ###  getmetadata
@@ -45,7 +92,7 @@ GET {{server}}/odata/v4/DNService/render()
 ###  itenrender 
 # @name itenrender 
 
-GET {{server}}/odata/v4/DNService/OutbDeliveryItem(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprinting')
+GET {{server}}/odata/v4/DNService/OutbDeliveryItem(DeliveryDocument='80000002',DeliveryDocumentItem='000010')/DNService.render(template='labelprint3//labelprint3')
 
 
 

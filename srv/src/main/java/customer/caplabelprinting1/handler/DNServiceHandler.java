@@ -1,15 +1,26 @@
 package customer.caplabelprinting1.handler;
 
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Base64;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.sap.cds.Result;
 import com.sap.cds.ql.cqn.CqnAnalyzer;
 import com.sap.cds.reflect.CdsModel;
+import com.sap.cds.services.authentication.AuthenticationInfo;
 import com.sap.cds.services.cds.CdsReadEventContext;
 import com.sap.cds.services.handler.EventHandler;
 import com.sap.cds.services.handler.annotations.On;
@@ -26,16 +37,28 @@ import cds.gen.dnservice.DNService_;
 import cds.gen.dnservice.GetPrintQsContext;
 import cds.gen.dnservice.GetTemplatesContext;
 import cds.gen.dnservice.OutbDeliveryHeader_;
+import cds.gen.dnservice.OutbDeliveryItem;
 import cds.gen.dnservice.OutbDeliveryItemRenderAndPrintContext;
 import cds.gen.dnservice.OutbDeliveryItemRenderContext;
 import cds.gen.dnservice.OutbDeliveryItem_;
+import cds.gen.dnservice.PrintContext;
+import customer.caplabelprinting1.btpservice.ads.api.AdsRenderRequestApi;
 import customer.caplabelprinting1.btpservice.ads.api.StoreFormsApi;
+import customer.caplabelprinting1.btpservice.ads.model.FileOutput;
+import customer.caplabelprinting1.btpservice.ads.model.FormStoreOutput;
+import customer.caplabelprinting1.btpservice.ads.model.RenderInput;
+import customer.caplabelprinting1.btpservice.ads.model.TemplateStoreOutput;
+import customer.caplabelprinting1.btpservice.ads.model.RenderInput.EmbedFontEnum;
+import customer.caplabelprinting1.btpservice.ads.model.RenderInput.FormTypeEnum;
+import customer.caplabelprinting1.btpservice.ads.model.RenderInput.TaggedPdfEnum;
 import customer.caplabelprinting1.btpservice.print.api.DocumentsApi;
 import customer.caplabelprinting1.btpservice.print.api.PrintTasksApi;
 import customer.caplabelprinting1.btpservice.print.api.QueuesApi;
 import customer.caplabelprinting1.btpservice.print.model.PrintQueueDTO;
+import customer.caplabelprinting1.btpservice.print.model.PrintTask;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 
@@ -43,26 +66,32 @@ import customer.caplabelprinting1.btpservice.print.model.PrintQueueDTO;
 
 public class DNServiceHandler implements EventHandler {
 
+    private final static Logger logger = LoggerFactory.getLogger(DNServiceHandler.class);
+
     private final CqnAnalyzer cqnAnalyzer;
     private final ApiOutboundDeliverySrv dnapi;
-    // private final Destination adsDestination;
-    // private final Destination printDestination;
-    // private final StoreFormsApi storeFormApi;
-    // private final DocumentsApi documentsApi ;
-    // private final PrintTasksApi printTasksApi;
+    private final Destination adsDestination;
+    private final Destination printDestination;
+    private final QueuesApi queuesApi;
+    private final StoreFormsApi storeFormApi;
+    private final DocumentsApi documentsApi;
+    private final PrintTasksApi printTasksApi;
+    private final DocumentBuilderFactory factory;
+    private final AdsRenderRequestApi renderApi;
+    // private final DocumentBuilder builder;
     // private final QueuesApi queuesApi;
 
-
-
-    DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi,CdsModel cdsModel) {
+    DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi, CdsModel cdsModel) {
         this.dnapi = dnapi;
         this.cqnAnalyzer = CqnAnalyzer.create(cdsModel);
-        // this.adsDestination = DestinationAccessor.getDestination("ads-rest-api");
-        // this.printDestination = DestinationAccessor.getDestination("printServiceApi");
-        // this.storeFormApi = new StoreFormsApi(adsDestination);
-        // this.documentsApi = new DocumentsApi(printDestination);
-        // this.printTasksApi = new PrintTasksApi(printDestination);
-        // this.queuesApi = new QueuesApi(printDestination);
+        this.adsDestination = DestinationAccessor.getDestination("ads-rest-api");
+        this.printDestination = DestinationAccessor.getDestination("printServiceApi");
+        this.queuesApi = new QueuesApi(printDestination);
+        this.storeFormApi = new StoreFormsApi(adsDestination);
+        this.documentsApi = new DocumentsApi(adsDestination);
+        this.printTasksApi = new PrintTasksApi(printDestination);
+        this.factory = DocumentBuilderFactory.newInstance();
+        this.renderApi = new AdsRenderRequestApi(adsDestination);
     }
 
     @On(entity = OutbDeliveryHeader_.CDS_NAME)
@@ -79,59 +108,149 @@ public class DNServiceHandler implements EventHandler {
     @On
     public void getTemplates(GetTemplatesContext context) {
         List<ObjTemplate> aTemplates = new ArrayList<>();
+        Integer i;
+        i = 0;
 
+        List<FormStoreOutput> formsOutput = this.storeFormApi.formsGet();
 
-
-        ObjTemplate template = ObjTemplate.create();
-        template.setName("Labelprint/Labelprint");
-        aTemplates.add(template);
-
+        for (FormStoreOutput form : formsOutput) {
+            for (TemplateStoreOutput template : form.getTemplates()) {
+                aTemplates.add(ObjTemplate.create());
+                aTemplates.get(i).setName(form.getFormName().concat("/").concat(template.getTemplateName()));
+                i = i + 1;
+            }
+        }
         context.setResult(aTemplates);
-
     }
-
 
     @On
     public void getPrintQs(GetPrintQsContext context) {
         List<ObjPrintQ> aPrintQs = new ArrayList<>();
-        ObjPrintQ printQ1 = ObjPrintQ.create();
-
-       Destination printDestination = DestinationAccessor.getDestination("printServiceApi");
-            QueuesApi queuesApi = new QueuesApi(printDestination);
-
-        // aPrintQs =(List<ObjPrintQ>)queuesApi.qmApiV1RestQueuesGet()
-        List<PrintQueueDTO> printQs = queuesApi.qmApiV1RestQueuesGet();
-        for(PrintQueueDTO printQ: printQs){
-            // printQ.getQname();
-            printQ1.setQname(printQ.getQname());
-            printQ1.setQstatus(printQ.getQstatus());
-            printQ1.setQdescription(printQ.getQdescription());
-            printQ1.setCreator(printQ.getCreator());
-            aPrintQs.add( printQ1 );
+        Integer i;
+        i = 0;
+        List<PrintQueueDTO> printQs = this.queuesApi.qmApiV1RestQueuesGet();
+        logger.info(printQs.toString());
+        logger.info("Print Qs get successfully");
+        for (PrintQueueDTO printQ : printQs) {
+            aPrintQs.add(ObjPrintQ.create());
+            aPrintQs.get(i).setQname(printQ.getQname());
+            aPrintQs.get(i).setQformatDescript(printQ.getQdescription());
+            aPrintQs.get(i).setCreator(printQ.getCreator());
+            aPrintQs.get(i).setQstatus(printQ.getQstatus());
+            i = i + 1;
         }
-        
-        // ObjPrintQ printQ1 = ObjPrintQ.create();
-        // printQ1.setQname("Plant1");
-        // aPrintQs.add(printQ1);
-
         context.setResult(aPrintQs);
 
     }
 
+    @On
+    public void print(PrintContext context) {
+
+        String userId = context.getUserInfo().getName();
+        String pdfInB64 = context.getPdf();
+        String printQ = context.getPrintQ();
+        String filename = context.getFileName();
+
+        byte[] decodedBytes = Base64.getDecoder().decode(pdfInB64);
+        String decodedString = new String(decodedBytes);
+        String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(decodedString);
+        context.setResult(docuId);
+
+        PrintTask printTask = new PrintTask();
+        printTask.setNumberOfCopies(1);
+        printTask.setQname(printQ);
+        printTask.setUsername(userId);
+
+        printTasksApi.qmApiV1RestPrintTasksItemIdPut(decodedString, docuId, printTask);
+    }
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)
     public void render(OutbDeliveryItemRenderContext context) {
-        String sTemplate = context.getTemplate();
+        // logger.info(context.getTemplate());
+         String sTemplate = context.getTemplate().replace("|", "/");
+        // logger.info(sTemplate);
 
-        byte result[];
-        result = new byte[3] ;
-        result[0] = 10;
-        result[1] = 20;
-        result[2] =30 ;
+
+
+        String deliverDoc = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeys()
+                .get(OutbDeliveryItem.DELIVERY_DOCUMENT);
+                logger.info(deliverDoc);
+        String deliverItem = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeys()
+                .get(OutbDeliveryItem.DELIVERY_DOCUMENT_ITEM);
+        String sMaterial = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
+                .get(OutbDeliveryItem.MATERIAL);
+        String sQuantity = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
+                .get(OutbDeliveryItem.ACTUAL_DELIVERY_QUANTITY);
+        String sPackageS = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
+                .get(OutbDeliveryItem.NUMBER_OF_SERIAL_NUMBERS);
+
+        // logger.info(context.getCqn().toJson().toString());
+        // logger.info(context.getModel().entities().toString());
+
+        String sPrintContent = "";
+
+        try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            Document document = builder.newDocument();
+
+            Element form = document.createElement("form1");
+            document.appendChild(form);
+
+            Element labelForm = document.createElement("LabelForm");
+            form.appendChild(labelForm);
+
+            Element deliveryId = document.createElement("DeliveryId");
+            deliveryId.appendChild(document.createTextNode(deliverDoc));
+            labelForm.appendChild(deliveryId);
+
+            Element position = document.createElement("Position");
+            position.appendChild(document.createTextNode(deliverItem));
+            labelForm.appendChild(position);
+
+            Element materialNo = document.createElement("MaterialNo");
+            materialNo.appendChild(document.createTextNode(sMaterial));
+            labelForm.appendChild(materialNo);
+
+            Element quantity = document.createElement("Quantity");
+            quantity.appendChild(document.createTextNode(sQuantity));
+            labelForm.appendChild(quantity);
+
+            Element sPackage = document.createElement("Package");
+            sPackage.appendChild(document.createTextNode(sPackageS));
+            labelForm.appendChild(sPackage);
+
+            Element qRCode = document.createElement("QRCode");
+            qRCode.appendChild(document.createTextNode("QRCode Value"));
+            labelForm.appendChild(qRCode);
+            DOMSource source = new DOMSource(document); 
+            // sPrintContent = source.getNode("form1").toString();  
+            TransformerFactory transformerFactory = TransformerFactory.newInstance(); 
+            Transformer transformer = transformerFactory.newTransformer(); 
+            StringWriter writer = new StringWriter();
+            transformer.transform(source,new StreamResult(writer));
+             sPrintContent = writer.getBuffer().toString();
+            // logger.info(sPrintContent);
+
+        } catch (Exception e) {
+            logger.info("error happened in xml build");
+            e.printStackTrace();
+        }
+        String sPrintContentInB64 = Base64.getEncoder().encodeToString(sPrintContent.getBytes());
+        // logger.info(sPrintContentInB64);
+
+        RenderInput renderInput = new RenderInput();
+        renderInput.setXdpTemplate(sTemplate);
+        renderInput.setXmlData(sPrintContentInB64);
+        renderInput.setFormLocale("en_US");
+        renderInput.setFormType(FormTypeEnum.PRINT);
+        renderInput.setTaggedPdf(TaggedPdfEnum.NUMBER_1);
+        renderInput.setEmbedFont(EmbedFontEnum.NUMBER_1);
+        FileOutput renderResult = renderApi.renderingPDFPost(renderInput,"storageName",2);
+        // logger.info(renderResult.toString());
+        byte result[] = renderResult.getFileContent().getBytes();
         context.setResult(result);
     }
-
-
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)
     public void renderAndPrint(OutbDeliveryItemRenderAndPrintContext context) {
@@ -140,7 +259,5 @@ public class DNServiceHandler implements EventHandler {
 
         context.setResult("Print task created");
     }
-
-
 
 }

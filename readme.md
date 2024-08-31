@@ -329,3 +329,17 @@ public class DNServiceHandler implements EventHandler {
 
 
 ```
+
+cds add mta,xsuaa,approuter --for production
+
+```
+<dependency>
+    <groupId>com.sap.cds</groupId>
+    <artifactId>cds-starter-cloudfoundry</artifactId>
+</dependency>
+```
+
+
+mbt build -t gen --mtar mta.mtar
+
+cf deploy gen/mta.mtar

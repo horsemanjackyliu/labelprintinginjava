@@ -89,4 +89,4 @@ define type ObjPrintQ {
 
 }
 
-annotate dnservice with @(requires: 'Viewer') ;
+// annotate DNService with @(requires: 'Viewer') ;

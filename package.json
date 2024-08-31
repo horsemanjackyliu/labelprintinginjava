@@ -15,5 +15,8 @@
         "model": "srv/external/API_OUTBOUND_DELIVERY_SRV"
       }
     }
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^8"
   }
 }

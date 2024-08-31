@@ -65,7 +65,24 @@ public class PrintQueueDTO
   private String creator;
 
   @JsonProperty("createdOn")
-  private LocalDate createdOn;
+  //  private LocalDate createdOn;
+   private String createdOn;
+
+
+
+  //  @JsonProperty("profileEnabled")
+  //  private Boolean profileEnabled;
+
+  //  @JsonProperty("locationId")
+  //  private String locationId;
+
+  //  @JsonProperty("locationIdType")
+  //  private String locationIdType;
+
+
+
+
+
 
   @JsonAnySetter
   @JsonAnyGetter
@@ -273,7 +290,12 @@ public class PrintQueueDTO
     * @param createdOn  Creation date
     * @return The same instance of this {@link PrintQueueDTO} class
     */
-   @Nonnull public PrintQueueDTO createdOn(@Nonnull final LocalDate createdOn) {
+  //  @Nonnull public PrintQueueDTO createdOn(@Nonnull final LocalDate createdOn) {
+  //   this.createdOn = createdOn;
+  //   return this;
+  // }
+
+     @Nonnull public PrintQueueDTO createdOn(@Nonnull final String createdOn) {
     this.createdOn = createdOn;
     return this;
   }
@@ -282,7 +304,11 @@ public class PrintQueueDTO
     * Creation date
     * @return createdOn  The createdOn of this {@link PrintQueueDTO} instance.
     */
-  @Nonnull public LocalDate getCreatedOn() {
+  // @Nonnull public LocalDate getCreatedOn() {
+  //   return createdOn;
+  // }
+
+    @Nonnull public String getCreatedOn() {
     return createdOn;
   }
 
@@ -291,7 +317,11 @@ public class PrintQueueDTO
    *
    * @param createdOn  Creation date
    */
-  public void setCreatedOn( @Nonnull final LocalDate createdOn) {
+  // public void setCreatedOn( @Nonnull final LocalDate createdOn) {
+  //   this.createdOn = createdOn;
+  // }
+
+    public void setCreatedOn( @Nonnull final String createdOn) {
     this.createdOn = createdOn;
   }
 
