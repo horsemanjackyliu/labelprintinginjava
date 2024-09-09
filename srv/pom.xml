@@ -119,6 +119,26 @@
 			<version>${cf-java-logging-support.version}</version>
 		</dependency>
 
+
+		<!-- <dependency>
+			<groupId>com.sap.cloud.security</groupId>
+			<artifactId>resourceserver-security-spring-boot-starter</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+		<dependency>
+            <groupId>com.sap.cloud.security</groupId>
+            <artifactId>java-security</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>com.sap.cloud.security.xsuaa</groupId>
+            <artifactId>xsuaa-spring-boot-starter</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>com.sap.cloud.security</groupId>
+            <artifactId>java-security-test</artifactId>
+            <scope>test</scope>
+        </dependency> -->
+
 	</dependencies>
 
 	<build>

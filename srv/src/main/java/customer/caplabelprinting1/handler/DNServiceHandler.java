@@ -33,6 +33,7 @@ import cds.gen.ObjPrintQ;
 import cds.gen.ObjTemplate;
 import cds.gen.api_outbound_delivery_srv.ApiOutboundDeliverySrv;
 import cds.gen.api_outbound_delivery_srv.ApiOutboundDeliverySrv_;
+import cds.gen.dnservice.DNService;
 import cds.gen.dnservice.DNService_;
 import cds.gen.dnservice.GetPrintQsContext;
 import cds.gen.dnservice.GetTemplatesContext;
@@ -54,6 +55,7 @@ import customer.caplabelprinting1.btpservice.ads.model.RenderInput.TaggedPdfEnum
 import customer.caplabelprinting1.btpservice.print.api.DocumentsApi;
 import customer.caplabelprinting1.btpservice.print.api.PrintTasksApi;
 import customer.caplabelprinting1.btpservice.print.api.QueuesApi;
+import customer.caplabelprinting1.btpservice.print.model.PrintContent;
 import customer.caplabelprinting1.btpservice.print.model.PrintQueueDTO;
 import customer.caplabelprinting1.btpservice.print.model.PrintTask;
 
@@ -148,44 +150,56 @@ public class DNServiceHandler implements EventHandler {
 
         String userId = context.getUserInfo().getName();
         String pdfInB64 = context.getPdf();
+        // logger.info(pdfInB64);
         String printQ = context.getPrintQ();
+        // logger.info(printQ);
         String filename = context.getFileName();
+        // logger.info(filename);
 
-        byte[] decodedBytes = Base64.getDecoder().decode(pdfInB64);
-        String decodedString = new String(decodedBytes);
-        String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(decodedString);
-        context.setResult(docuId);
+        // byte[] decodedBytes = Base64.getDecoder().decode(pdfInB64);
+        // String decodedString = new String(decodedBytes);
+        // String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(decodedString);
+
+        String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(pdfInB64);
+        logger.info(docuId);
+        
 
         PrintTask printTask = new PrintTask();
         printTask.setNumberOfCopies(1);
         printTask.setQname(printQ);
         printTask.setUsername(userId);
+        PrintContent printContent = new PrintContent();
+        printContent.documentName(filename);
+        printContent.setObjectKey(docuId);
+        printTask.addPrintContentsItem(printContent);
 
-        printTasksApi.qmApiV1RestPrintTasksItemIdPut(decodedString, docuId, printTask);
+        printTasksApi.qmApiV1RestPrintTasksItemIdPut(docuId, "*", printTask);
+        context.setResult("Print task created successfully");        
     }
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)
     public void render(OutbDeliveryItemRenderContext context) {
         // logger.info(context.getTemplate());
-         String sTemplate = context.getTemplate().replace("|", "/");
+        String sTemplate = context.getTemplate().replace("|", "/");
         // logger.info(sTemplate);
-
-
 
         String deliverDoc = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeys()
                 .get(OutbDeliveryItem.DELIVERY_DOCUMENT);
-                logger.info(deliverDoc);
+        logger.info(deliverDoc);
         String deliverItem = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeys()
                 .get(OutbDeliveryItem.DELIVERY_DOCUMENT_ITEM);
-        String sMaterial = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
-                .get(OutbDeliveryItem.MATERIAL);
-        String sQuantity = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
-                .get(OutbDeliveryItem.ACTUAL_DELIVERY_QUANTITY);
-        String sPackageS = (String) this.cqnAnalyzer.analyze(context.getCqn()).targetKeyValues()
-                .get(OutbDeliveryItem.NUMBER_OF_SERIAL_NUMBERS);
 
-        // logger.info(context.getCqn().toJson().toString());
-        // logger.info(context.getModel().entities().toString());
+        Result oItem = dnapi.run(context.getCqn());
+        OutbDeliveryItem dnItem = oItem.first().get().as(OutbDeliveryItem.class);
+
+        String sMaterial = dnItem.getMaterial();
+        String sQuantity = dnItem.getActualDeliveryQuantity().toString();
+        String sPackageS = dnItem.getNumberOfSerialNumbers().toString();
+
+        // logger.info(this.cqnAnalyzer.analyze(context.getCqn()).toString());
+
+        String qRcodeS = deliverDoc.concat("|").concat(deliverItem).concat("|").concat(sMaterial)
+                .concat("|").concat(sQuantity).concat("|").concat(sPackageS);
 
         String sPrintContent = "";
 
@@ -221,15 +235,15 @@ public class DNServiceHandler implements EventHandler {
             labelForm.appendChild(sPackage);
 
             Element qRCode = document.createElement("QRCode");
-            qRCode.appendChild(document.createTextNode("QRCode Value"));
+            qRCode.appendChild(document.createTextNode(qRcodeS));
             labelForm.appendChild(qRCode);
-            DOMSource source = new DOMSource(document); 
-            // sPrintContent = source.getNode("form1").toString();  
-            TransformerFactory transformerFactory = TransformerFactory.newInstance(); 
-            Transformer transformer = transformerFactory.newTransformer(); 
+            DOMSource source = new DOMSource(document);
+            // sPrintContent = source.getNode("form1").toString();
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
             StringWriter writer = new StringWriter();
-            transformer.transform(source,new StreamResult(writer));
-             sPrintContent = writer.getBuffer().toString();
+            transformer.transform(source, new StreamResult(writer));
+            sPrintContent = writer.getBuffer().toString();
             // logger.info(sPrintContent);
 
         } catch (Exception e) {
@@ -246,10 +260,8 @@ public class DNServiceHandler implements EventHandler {
         renderInput.setFormType(FormTypeEnum.PRINT);
         renderInput.setTaggedPdf(TaggedPdfEnum.NUMBER_1);
         renderInput.setEmbedFont(EmbedFontEnum.NUMBER_1);
-        FileOutput renderResult = renderApi.renderingPDFPost(renderInput,"storageName",2);
-        // logger.info(renderResult.toString());
-        byte result[] = renderResult.getFileContent().getBytes();
-        context.setResult(result);
+        FileOutput renderResult = renderApi.renderingPDFPost(renderInput, "storageName", 2);
+        context.setResult(renderResult.getFileContent());
     }
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)

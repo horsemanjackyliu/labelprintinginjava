@@ -1,70 +1,146 @@
 _schema-version: 3.3.0
 ID: caplabelprinting1
+description: A simple CAP project.
 version: 1.0.0-SNAPSHOT
-description: "A simple CAP project."
-parameters:
-  enable-parallel-deployments: true
 modules:
-  - name: caplabelprinting1-srv
-    type: java
-    path: srv
-    parameters:
-      buildpack: sap_java_buildpack_jakarta
-      readiness-health-check-type: http
-      readiness-health-check-http-endpoint: /actuator/health
-    properties:
-      SPRING_PROFILES_ACTIVE: cloud,sandbox
-      JBP_CONFIG_COMPONENTS: "jres: ['com.sap.xs.java.buildpack.jre.SAPMachineJRE']"
-      JBP_CONFIG_SAP_MACHINE_JRE: '{ version: 21.+ }'
-    build-parameters:
-      builder: custom
-      commands:
-        - mvn clean package -DskipTests=true --batch-mode
-      build-result: target/*-exec.jar
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: caplabelprinting1-destination
-      - name: caplabelprinting1-auth
-      - name: app-api
-        properties:
-          CDS_MULTITENANCY_APPUI_URL: ~{url}
-
-  - name: caplabelprinting1
-    type: approuter.nodejs
-    path: app/router
-    parameters:
-      keep-existing-routes: true
-      disk-quota: 256M
-      memory: 256M
-    requires:
-      - name: srv-api
-        group: destinations
-        properties:
-          name: srv-api # must be used in xs-app.json as well
-          url: ~{srv-url}
-          forwardAuthToken: true
-      - name: caplabelprinting1-auth
-      - name: caplabelprinting1-destination
-    provides:
-      - name: app-api
-        properties:
-          url: ${default-url}
-
-resources:
+- name: caplabelprinting1-srv
+  type: java
+  path: srv
+  properties:
+    JBP_CONFIG_COMPONENTS: 'jres: [''com.sap.xs.java.buildpack.jre.SAPMachineJRE'']'
+    JBP_CONFIG_SAP_MACHINE_JRE: '{ version: 21.+ }'
+    SPRING_PROFILES_ACTIVE: cloud,sandbox
+  requires:
   - name: caplabelprinting1-destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: destination
-      service-plan: lite
   - name: caplabelprinting1-auth
-    type: org.cloudfoundry.managed-service
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: sap_java_buildpack_jakarta
+    readiness-health-check-http-endpoint: /actuator/health
+    readiness-health-check-type: http
+  build-parameters:
+    build-result: target/*-exec.jar
+    builder: custom
+    commands:
+    - mvn clean package -DskipTests=true --batch-mode
+- name: caplabelprinting1-app-deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: caplabelprinting1-html5-repo-host
     parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json
-      config:
-        xsappname: caplabelprinting1-${org}-${space}
-        tenant-mode: dedicated
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - labelprintingj.zip
+      name: caplabelprinting1labelprintingj
+      target-path: resources
+    - artifacts:
+      - nslabelprintingj.zip
+      name: nslabelprintingj
+      target-path: resources/
+- name: caplabelprinting1labelprintingj
+  type: html5
+  path: app/labelprintingj
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm ci
+    - npm run build:cf
+    supported-platforms: []
+- name: caplabelprinting1-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: caplabelprinting1-destination
+    parameters:
+      content-target: true
+  - name: caplabelprinting1-html5-repo-host
+    parameters:
+      service-key:
+        name: caplabelprinting1-html5-repo-host-key
+  - name: caplabelprinting1-auth
+    parameters:
+      service-key:
+        name: caplabelprinting1-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: labelprintingj_caplabelprinting1_html5_repo_host
+          ServiceInstanceName: caplabelprinting1-html5-app-host-service
+          ServiceKeyName: caplabelprinting1-html5-repo-host-key
+          sap.cloud.service: labelprintingj
+        - Authentication: OAuth2UserTokenExchange
+          Name: labelprintingj_caplabelprinting1_auth
+          ServiceInstanceName: caplabelprinting1-auth
+          ServiceKeyName: caplabelprinting1-auth-key
+          sap.cloud.service: labelprintingj
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: nslabelprintingj
+  type: html5
+  path: app/labelprintingj
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: caplabelprinting1-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: caplabelprinting1-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: caplabelprinting1-html5-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: caplabelprinting1-html5-app-host-service
+    service-plan: app-host
+- name: caplabelprinting1-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: caplabelprinting1-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

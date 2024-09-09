@@ -1,0 +1,238 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "ns.labelprintingj",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.14.4",
+      "toolsId": "85c80ff2-a6a6-46e3-82c4-66e4fcf59fad"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/DNService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "OutboundDeliveryJ-Display": {
+          "semanticObject": "OutboundDeliveryJ",
+          "action": "Display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.127.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.labelprintingj.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "OutbDeliveryHeaderList",
+          "target": "OutbDeliveryHeaderList"
+        },
+        {
+          "pattern": "OutbDeliveryHeader({key}):?query:",
+          "name": "OutbDeliveryHeaderObjectPage",
+          "target": "OutbDeliveryHeaderObjectPage"
+        },
+        {
+          "pattern": "OutbDeliveryHeader({key})/Items({key2}):?query:",
+          "name": "OutbDeliveryItemObjectPage",
+          "target": "OutbDeliveryItemObjectPage"
+        }
+      ],
+      "targets": {
+        "OutbDeliveryHeaderList": {
+          "type": "Component",
+          "id": "OutbDeliveryHeaderList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/OutbDeliveryHeader",
+              "variantManagement": "Page",
+              "navigation": {
+                "OutbDeliveryHeader": {
+                  "detail": {
+                    "route": "OutbDeliveryHeaderObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "OutbDeliveryHeaderObjectPage": {
+          "type": "Component",
+          "id": "OutbDeliveryHeaderObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/OutbDeliveryHeader",
+              "navigation": {
+                "Items": {
+                  "detail": {
+                    "route": "OutbDeliveryItemObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "OutbDeliveryItemObjectPage": {
+          "type": "Component",
+          "id": "OutbDeliveryItemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/OutbDeliveryHeader/Items",
+              "content": {
+                "header": {
+                  "actions": {
+                    "PrintPreview": {
+                      "press": ".extension.ns.labelprintingj.ext.controller.ItemObjController.printPreview",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "PrintPreview"
+                    },
+                    "Print": {
+                      "press": ".extension.ns.labelprintingj.ext.controller.ItemObjController.print",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Print",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "PrintPreview"
+                      }
+                    }
+                  },
+                  "facets": {
+                    "RenderTemplate": {
+                      "template": "ns.labelprintingj.ext.fragment.RenderTemplate",
+                      "title": "RenderTemplate",
+                      "subTitle": "RenderTemplate",
+                      "stashed": false,
+                      "requestGroupId": "Heroes",
+                      "flexSettings": {
+                        "designtime": "Default"
+                      }
+                    }
+                  }
+                },
+                "body": {
+                  "sections": {
+                    "PrintPreview": {
+                      "template": "ns.labelprintingj.ext.fragment.PrintPreview",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "ItemDetails"
+                      },
+                      "title": "PrintPreview"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController#ns.labelprintingj::OutbDeliveryItemObjectPage": {
+            "controllerName": "ns.labelprintingj.ext.controller.ItemObjController"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "labelprintingj"
+  }
+}

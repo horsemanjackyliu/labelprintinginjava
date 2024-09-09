@@ -55,7 +55,7 @@ service DNService {
                 DeliveryDocumentItemText,
                 DistributionChannel
 }actions{
-            function render(template : String)                          returns LargeBinary;            
+            function render(template : String)                          returns LargeString;            
             function renderAndPrint(template : String, printQ : String) returns String;
             function test() returns array of String;
 
@@ -89,4 +89,4 @@ define type ObjPrintQ {
 
 }
 
-// annotate DNService with @(requires: 'Viewer') ;
+ annotate DNService with @(requires: 'Viewer') ;
