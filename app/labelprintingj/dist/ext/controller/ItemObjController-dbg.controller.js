@@ -39,10 +39,10 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension','sap/ui/model/json/JSONMode
 					const reader = new FileReader();
 					reader.onload = function () {
 						const dataUrl = reader.result;
-						console.log(dataUrl);
+						// console.log(dataUrl);
 						const base64String = dataUrl.split(',')[1];
-						console.log(base64String);
-						console.log(typeof (base64String));
+						// console.log(base64String);
+						// console.log(typeof (base64String));
 
 						let oModel = oEvent.getModel();
 						const sPrint = 'print';

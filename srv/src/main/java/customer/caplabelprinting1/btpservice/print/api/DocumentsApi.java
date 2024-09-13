@@ -89,6 +89,7 @@ public class DocumentsApi extends AbstractOpenApiService {
         }
         
         final String localVarPath = UriComponentsBuilder.fromPath("/dm/api/v1/rest/print-documents").build().toUriString();
+    
 
         final MultiValueMap<String, String> localVarQueryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders localVarHeaderParams = new HttpHeaders();

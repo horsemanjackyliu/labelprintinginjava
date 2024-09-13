@@ -1,6 +1,10 @@
 package customer.caplabelprinting1.handler;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Base64;
@@ -20,14 +24,15 @@ import org.w3c.dom.Element;
 import com.sap.cds.Result;
 import com.sap.cds.ql.cqn.CqnAnalyzer;
 import com.sap.cds.reflect.CdsModel;
-import com.sap.cds.services.authentication.AuthenticationInfo;
+// import com.sap.cds.services.authentication.AuthenticationInfo;
 import com.sap.cds.services.cds.CdsReadEventContext;
 import com.sap.cds.services.handler.EventHandler;
 import com.sap.cds.services.handler.annotations.On;
 import com.sap.cds.services.handler.annotations.ServiceName;
-import com.sap.cloud.sdk.cloudplatform.connectivity.DefaultHttpDestination;
+// import com.sap.cloud.sdk.cloudplatform.connectivity.DefaultHttpDestination;
 import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
+import com.sap.cloud.sdk.services.openapi.core.OpenApiRequestException;
 
 import cds.gen.ObjPrintQ;
 import cds.gen.ObjTemplate;
@@ -90,7 +95,7 @@ public class DNServiceHandler implements EventHandler {
         this.printDestination = DestinationAccessor.getDestination("printServiceApi");
         this.queuesApi = new QueuesApi(printDestination);
         this.storeFormApi = new StoreFormsApi(adsDestination);
-        this.documentsApi = new DocumentsApi(adsDestination);
+        this.documentsApi = new DocumentsApi(printDestination);
         this.printTasksApi = new PrintTasksApi(printDestination);
         this.factory = DocumentBuilderFactory.newInstance();
         this.renderApi = new AdsRenderRequestApi(adsDestination);
@@ -150,31 +155,61 @@ public class DNServiceHandler implements EventHandler {
 
         String userId = context.getUserInfo().getName();
         String pdfInB64 = context.getPdf();
-        // logger.info(pdfInB64);
         String printQ = context.getPrintQ();
-        // logger.info(printQ);
+        logger.info(printQ);
         String filename = context.getFileName();
-        // logger.info(filename);
+        logger.info(filename);
 
-        // byte[] decodedBytes = Base64.getDecoder().decode(pdfInB64);
-        // String decodedString = new String(decodedBytes);
-        // String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(decodedString);
+        byte[] decodedBytes = Base64.getDecoder().decode(pdfInB64);
 
-        String docuId = documentsApi.dmApiV1RestPrintDocumentsPost(pdfInB64);
-        logger.info(docuId);
-        
+        String docuId = "";
+        File file = new File(filename);
+        try {
+            Files.write(Paths.get(filename), decodedBytes);
+        } catch (IOException e) {
+            context.setResult("File Creation in Error");
+            // logger.info("file write with error");
+            // logger.info(e.getMessage());
+            // e.printStackTrace();
+            
+        }
 
-        PrintTask printTask = new PrintTask();
-        printTask.setNumberOfCopies(1);
-        printTask.setQname(printQ);
-        printTask.setUsername(userId);
-        PrintContent printContent = new PrintContent();
-        printContent.documentName(filename);
-        printContent.setObjectKey(docuId);
-        printTask.addPrintContentsItem(printContent);
+        try {
+            docuId = documentsApi.dmApiV1RestPrintDocumentsPost("*", false, file);
+            // logger.info("document uploaded");            
+            // logger.info(docuId);
+        } catch (OpenApiRequestException apiException) {
+            context.setResult("Document upload failed");
+            // logger.info("Document upload failed");
+            // apiException.printStackTrace();
+            
+        }
+        file.delete();
 
-        printTasksApi.qmApiV1RestPrintTasksItemIdPut(docuId, "*", printTask);
-        context.setResult("Print task created successfully");        
+        if (docuId != "") {
+
+            PrintTask printTask = new PrintTask();
+            printTask.setNumberOfCopies(1);
+            printTask.setQname(printQ);
+            printTask.setUsername(userId);
+            PrintContent printContent = new PrintContent();
+            printContent.documentName(filename);
+            printContent.setObjectKey(docuId);
+            printTask.addPrintContentsItem(printContent);
+            try {
+                printTasksApi.qmApiV1RestPrintTasksItemIdPut(docuId, "*", printTask);
+                context.setResult("Print task created successfully");
+
+            } catch (OpenApiRequestException e1) {
+                context.setResult("print task creation failed");
+                // e1.printStackTrace();
+               
+            }
+            ;
+
+        }else{
+            context.setResult("Document ID is null");
+        }
     }
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)
@@ -266,6 +301,7 @@ public class DNServiceHandler implements EventHandler {
 
     @On(entity = OutbDeliveryItem_.CDS_NAME)
     public void renderAndPrint(OutbDeliveryItemRenderAndPrintContext context) {
+
         String sTemplate = context.getTemplate();
         String sPrintQ = context.getPrintQ();
 
