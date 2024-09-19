@@ -3,7 +3,7 @@ using { API_OUTBOUND_DELIVERY_SRV as dnapi } from './external/API_OUTBOUND_DELIV
 service DNService {
 
     @readonly
-    entity OutbDeliveryHeader as projection on dnapi.A_OutbDeliveryHeader{
+    entity OutbDeliveryHeader  as projection on dnapi.A_OutbDeliveryHeader{
             key DeliveryDocument,
                 DeliveryDate,
                 ActualDeliveryRoute,

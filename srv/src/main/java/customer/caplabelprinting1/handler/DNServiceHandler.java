@@ -63,6 +63,11 @@ import customer.caplabelprinting1.btpservice.print.api.QueuesApi;
 import customer.caplabelprinting1.btpservice.print.model.PrintContent;
 import customer.caplabelprinting1.btpservice.print.model.PrintQueueDTO;
 import customer.caplabelprinting1.btpservice.print.model.PrintTask;
+import customer.caplabelprinting1.service.AdsServiceRender;
+import customer.caplabelprinting1.service.AdsServiceTemplate;
+import customer.caplabelprinting1.service.PrintServiceDocumentApi;
+import customer.caplabelprinting1.service.PrintServicePrintQ;
+import customer.caplabelprinting1.service.PrintServicePrintTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,32 +82,44 @@ public class DNServiceHandler implements EventHandler {
 
     private final CqnAnalyzer cqnAnalyzer;
     private final ApiOutboundDeliverySrv dnapi;
-    private final Destination adsDestination;
-    private final Destination printDestination;
-    private final QueuesApi queuesApi;
-    private final StoreFormsApi storeFormApi;
-    private final DocumentsApi documentsApi;
-    private final PrintTasksApi printTasksApi;
+    private final AdsServiceRender adsServiceRender = new AdsServiceRender();
+    private final AdsServiceTemplate adsServiceTemplate = new AdsServiceTemplate();
+    private final PrintServiceDocumentApi printServiceDocumentApi = new PrintServiceDocumentApi();
+    private final PrintServicePrintQ printServicePrintQ = new PrintServicePrintQ();
+    private final PrintServicePrintTask printServicePrintTask = new PrintServicePrintTask();
+
+    // private final Destination adsDestination;
+    // private final Destination printDestination;
+    // private final QueuesApi queuesApi;
+    // private final StoreFormsApi storeFormApi;
+    // private final DocumentsApi documentsApi;
+    // private final PrintTasksApi printTasksApi;
     private final DocumentBuilderFactory factory;
-    private final AdsRenderRequestApi renderApi;
+    // private final AdsRenderRequestApi renderApi;
     // private final DocumentBuilder builder;
     // private final QueuesApi queuesApi;
 
     DNServiceHandler(@Qualifier(ApiOutboundDeliverySrv_.CDS_NAME) ApiOutboundDeliverySrv dnapi, CdsModel cdsModel) {
+
+    
+        // DNServiceHandler(CdsModel cdsModel) {    
         this.dnapi = dnapi;
         this.cqnAnalyzer = CqnAnalyzer.create(cdsModel);
-        this.adsDestination = DestinationAccessor.getDestination("ads-rest-api");
-        this.printDestination = DestinationAccessor.getDestination("printServiceApi");
-        this.queuesApi = new QueuesApi(printDestination);
-        this.storeFormApi = new StoreFormsApi(adsDestination);
-        this.documentsApi = new DocumentsApi(printDestination);
-        this.printTasksApi = new PrintTasksApi(printDestination);
+        // this.adsDestination = DestinationAccessor.getDestination("ads-rest-api");
+        // this.printDestination = DestinationAccessor.getDestination("printServiceApi");
+        // this.queuesApi = new QueuesApi(printDestination);
+        // this.storeFormApi = new StoreFormsApi(adsDestination);
+        // this.documentsApi = new DocumentsApi(printDestination);
+        // this.printTasksApi = new PrintTasksApi(printDestination);
         this.factory = DocumentBuilderFactory.newInstance();
-        this.renderApi = new AdsRenderRequestApi(adsDestination);
+        // this.renderApi = new AdsRenderRequestApi(adsDestination);
     }
 
     @On(entity = OutbDeliveryHeader_.CDS_NAME)
     Result readOutbDeliveryHeaders(CdsReadEventContext context) {
+
+        // ApiOutboundDeliverySrv dnapi = 
+
         return (Result) dnapi.run(context.getCqn());
 
     }
@@ -114,39 +131,41 @@ public class DNServiceHandler implements EventHandler {
 
     @On
     public void getTemplates(GetTemplatesContext context) {
-        List<ObjTemplate> aTemplates = new ArrayList<>();
-        Integer i;
-        i = 0;
+        // List<ObjTemplate> aTemplates = new ArrayList<>();
+        // Integer i;
+        // i = 0;
 
-        List<FormStoreOutput> formsOutput = this.storeFormApi.formsGet();
-
-        for (FormStoreOutput form : formsOutput) {
-            for (TemplateStoreOutput template : form.getTemplates()) {
-                aTemplates.add(ObjTemplate.create());
-                aTemplates.get(i).setName(form.getFormName().concat("/").concat(template.getTemplateName()));
-                i = i + 1;
-            }
-        }
-        context.setResult(aTemplates);
+        // List<FormStoreOutput> formsOutput = this.storeFormApi.formsGet();
+        // for (FormStoreOutput form : formsOutput) {
+        //     for (TemplateStoreOutput template : form.getTemplates()) {
+        //         aTemplates.add(ObjTemplate.create());
+        //         aTemplates.get(i).setName(form.getFormName().concat("/").concat(template.getTemplateName()));
+        //         i = i + 1;
+        //     }
+        // }
+        // context.setResult(aTemplates);
+        context.setResult(this.adsServiceTemplate.getTemplatesCommand());
     }
 
     @On
     public void getPrintQs(GetPrintQsContext context) {
-        List<ObjPrintQ> aPrintQs = new ArrayList<>();
-        Integer i;
-        i = 0;
-        List<PrintQueueDTO> printQs = this.queuesApi.qmApiV1RestQueuesGet();
-        logger.info(printQs.toString());
-        logger.info("Print Qs get successfully");
-        for (PrintQueueDTO printQ : printQs) {
-            aPrintQs.add(ObjPrintQ.create());
-            aPrintQs.get(i).setQname(printQ.getQname());
-            aPrintQs.get(i).setQformatDescript(printQ.getQdescription());
-            aPrintQs.get(i).setCreator(printQ.getCreator());
-            aPrintQs.get(i).setQstatus(printQ.getQstatus());
-            i = i + 1;
-        }
-        context.setResult(aPrintQs);
+        // List<ObjPrintQ> aPrintQs = new ArrayList<>();
+        // Integer i;
+        // i = 0;
+        // List<PrintQueueDTO> printQs = this.queuesApi.qmApiV1RestQueuesGet();
+        // logger.info(printQs.toString());
+        // logger.info("Print Qs get successfully");
+        // for (PrintQueueDTO printQ : printQs) {
+        //     aPrintQs.add(ObjPrintQ.create());
+        //     aPrintQs.get(i).setQname(printQ.getQname());
+        //     aPrintQs.get(i).setQformatDescript(printQ.getQdescription());
+        //     aPrintQs.get(i).setCreator(printQ.getCreator());
+        //     aPrintQs.get(i).setQstatus(printQ.getQstatus());
+        //     i = i + 1;
+        // }
+        // context.setResult(aPrintQs);
+        context.setResult(this.printServicePrintQ.getPrintQsCommand());
+
 
     }
 
@@ -175,7 +194,8 @@ public class DNServiceHandler implements EventHandler {
         }
 
         try {
-            docuId = documentsApi.dmApiV1RestPrintDocumentsPost("*", false, file);
+            // docuId = documentsApi.dmApiV1RestPrintDocumentsPost("*", false, file);
+            docuId = this.printServiceDocumentApi.documentApiCommanc("*", false, file);
             // logger.info("document uploaded");            
             // logger.info(docuId);
         } catch (OpenApiRequestException apiException) {
@@ -197,11 +217,14 @@ public class DNServiceHandler implements EventHandler {
             printContent.setObjectKey(docuId);
             printTask.addPrintContentsItem(printContent);
             try {
-                printTasksApi.qmApiV1RestPrintTasksItemIdPut(docuId, "*", printTask);
-                context.setResult("Print task created successfully");
+                // printTasksApi.qmApiV1RestPrintTasksItemIdPut(docuId, "*", printTask);
+               int statusCode = this.printServicePrintTask.createPrintTaskCommand(docuId, "*", printTask);
+               if(statusCode != 500 ){
+                context.setResult("Print task created successfully");}
+                else{context.setResult("Print Task Creation Failed");}
 
             } catch (OpenApiRequestException e1) {
-                context.setResult("print task creation failed");
+                context.setResult("Print Task Creation Faile");
                 // e1.printStackTrace();
                
             }
@@ -295,7 +318,8 @@ public class DNServiceHandler implements EventHandler {
         renderInput.setFormType(FormTypeEnum.PRINT);
         renderInput.setTaggedPdf(TaggedPdfEnum.NUMBER_1);
         renderInput.setEmbedFont(EmbedFontEnum.NUMBER_1);
-        FileOutput renderResult = renderApi.renderingPDFPost(renderInput, "storageName", 2);
+        // FileOutput renderResult = renderApi.renderingPDFPost(renderInput, "storageName", 2);
+        FileOutput renderResult = this.adsServiceRender.renderCommand(renderInput, "storageName", 2);
         context.setResult(renderResult.getFileContent());
     }
 
